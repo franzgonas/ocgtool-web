@@ -18,6 +18,10 @@ importHotmart();
 :root{
   --bg:#050507;--bg2:#0c0c10;--bg3:#131318;--bg4:#1a1a22;
   --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.14);
+  /* Primary: neo-futuristic blue */
+  --acc:#00D4FF;--acc2:#7B61FF;--accdim:rgba(0,212,255,.10);
+  --acc-glow:rgba(0,212,255,.4);
+  /* Secondary: gold (kept for premium accents) */
   --gold:#F5A623;--gold2:#FFD173;--golddim:rgba(245,166,35,.12);
   --white:#fff;--g1:#e8e8ed;--g2:#a0a0ab;--g3:#58585f;
   --green:#30d158;--font:'Inter',-apple-system,sans-serif;
@@ -26,68 +30,123 @@ importHotmart();
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 body{background:var(--bg);color:var(--g1);font-family:var(--font);font-size:17px;line-height:1.6;overflow-x:hidden}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--gold)}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--acc)}
 
-/* NAV */
+/* ── ICON SYSTEM (modern SVG-based) ── */
+.icon-box{
+  width:44px;height:44px;border-radius:11px;
+  background:linear-gradient(135deg,rgba(0,212,255,.12),rgba(123,97,255,.06));
+  border:1px solid rgba(0,212,255,.2);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;color:var(--acc);
+  transition:all .3s var(--ease);
+}
+.icon-box.gold{
+  background:linear-gradient(135deg,rgba(245,166,35,.12),rgba(245,166,35,.04));
+  border-color:rgba(245,166,35,.25);color:var(--gold);
+}
+.icon-box svg{width:20px;height:20px}
+.feat:hover .icon-box{transform:scale(1.05);box-shadow:0 8px 24px rgba(0,212,255,.15)}
+
+/* ── PRODUCT CARD ICON SYSTEM ── */
+.prod-icon-bg{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.prod-icon-bg::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at center,rgba(0,212,255,.08) 0%,transparent 60%);
+}
+.prod-icon-bg.purple::before{background:radial-gradient(circle at center,rgba(123,97,255,.10) 0%,transparent 60%)}
+.prod-icon-bg.gold::before{background:radial-gradient(circle at center,rgba(245,166,35,.08) 0%,transparent 60%)}
+.prod-icon-bg.green::before{background:radial-gradient(circle at center,rgba(48,209,88,.08) 0%,transparent 60%)}
+.prod-icon-bg.pink::before{background:radial-gradient(circle at center,rgba(255,80,150,.08) 0%,transparent 60%)}
+.prod-icon-svg{
+  width:64px;height:64px;
+  position:relative;z-index:2;
+  filter:drop-shadow(0 4px 20px rgba(0,212,255,.3));
+}
+.prod-icon-svg.purple{filter:drop-shadow(0 4px 20px rgba(123,97,255,.3))}
+.prod-icon-svg.gold{filter:drop-shadow(0 4px 20px rgba(245,166,35,.3))}
+.prod-icon-svg.green{filter:drop-shadow(0 4px 20px rgba(48,209,88,.3))}
+.prod-icon-svg.pink{filter:drop-shadow(0 4px 20px rgba(255,80,150,.3))}
+.prod-grid-pattern{
+  position:absolute;inset:0;opacity:.4;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:24px 24px;
+}
+
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:54px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(5,5,7,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
 .nav-logo{display:flex;align-items:center;text-decoration:none;font-size:17px;font-weight:700;letter-spacing:-.03em}
-.nav-logo .w{color:#fff}.nav-logo .y{color:var(--gold)}
+.nav-logo .w{color:#fff}.nav-logo .y{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nav-links{display:flex;align-items:center;gap:6px}
 .nav-links a{font-size:13px;color:var(--g2);text-decoration:none;padding:7px 14px;border-radius:7px;transition:color .2s,background .2s}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
-.nav-buy{background:var(--gold)!important;color:#000!important;font-weight:700!important;border-radius:8px!important}
-.nav-buy:hover{background:var(--gold2)!important;box-shadow:0 4px 20px rgba(245,166,35,.4)!important}
+.nav-buy{background:linear-gradient(135deg,var(--acc),var(--acc2))!important;color:#fff!important;font-weight:700!important;border-radius:8px!important;box-shadow:0 0 0 1px rgba(0,212,255,.3)!important}
+.nav-buy:hover{box-shadow:0 4px 24px rgba(0,212,255,.4),0 0 0 1px rgba(0,212,255,.5)!important;transform:translateY(-1px)!important}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 50% at 50% -5%,rgba(245,166,35,.11) 0%,transparent 60%),var(--bg)}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.22);padding:7px 18px;border-radius:20px;margin-bottom:28px}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 50% at 50% -5%,rgba(0,212,255,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 90% 90%,rgba(123,97,255,.06) 0%,transparent 60%),var(--bg)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);background:rgba(0,212,255,.06);border:1px solid rgba(0,212,255,.2);padding:7px 18px;border-radius:20px;margin-bottom:28px}
 .live{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 2s ease-in-out infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 .hero h1{font-size:clamp(52px,9vw,104px);font-weight:800;line-height:.96;letter-spacing:-.045em;color:#fff;max-width:920px}
-.accent{background:linear-gradient(135deg,var(--gold) 0%,var(--gold2) 50%,var(--gold) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shine 4s linear infinite}
+.accent{background:linear-gradient(135deg,var(--acc) 0%,var(--acc2) 50%,var(--acc) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;background-size:200% auto;animation:shine 4s linear infinite}
 @keyframes shine{0%{background-position:0%}100%{background-position:200%}}
 .hero-sub{font-size:19px;color:var(--g2);margin:24px auto 0;max-width:560px;line-height:1.65}
 .hero-ctas{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:44px;flex-wrap:wrap}
-.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:#000;font-size:16px;font-weight:700;padding:16px 38px;border-radius:12px;text-decoration:none;border:none;cursor:pointer;font-family:var(--font);transition:all .25s var(--ease)}
-.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(245,166,35,.45)}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:16px;font-weight:700;padding:16px 38px;border-radius:12px;text-decoration:none;border:none;cursor:pointer;font-family:var(--font);transition:all .25s var(--ease);box-shadow:0 0 0 1px rgba(0,212,255,.3),0 4px 24px rgba(0,212,255,.15);position:relative;overflow:hidden}
+.btn-gold::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 0%,rgba(255,255,255,.15) 50%,transparent 100%);transform:translateX(-100%);transition:transform .6s var(--ease)}
+.btn-gold:hover::before{transform:translateX(100%)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(0,212,255,.5),0 12px 40px rgba(0,212,255,.35)}
 .btn-out{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);color:#fff;font-size:15px;font-weight:500;padding:15px 28px;border-radius:12px;text-decoration:none;border:1px solid var(--border2);transition:all .2s;cursor:pointer;font-family:var(--font)}
 .btn-out:hover{background:rgba(255,255,255,.12)}
 .hero-checks{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:40px;flex-wrap:wrap}
 .chk{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--g3)}
 .hero-img{margin-top:72px;width:100%;max-width:960px;animation:float 6s ease-in-out infinite;position:relative}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.hero-img img{width:100%;border-radius:20px;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 80px rgba(245,166,35,.15)}
+.hero-img img{width:100%;border-radius:20px;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 80px rgba(0,212,255,.1)}
 
 /* TICKER */
 .ticker{overflow:hidden;padding:15px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)}
 .ticker-track{display:flex;width:max-content;animation:tick 32s linear infinite}
 @keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .ti{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--g3);padding:0 28px;display:inline-flex;align-items:center;gap:28px}
-.ti-dot{color:var(--gold);font-size:16px}
+.ti-dot{color:var(--acc);font-size:16px}
 
 /* SECTIONS */
 .sec{padding:120px 40px}
 .sec-inner{max-width:1100px;margin:0 auto}
-.sec-label{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.sec-label::before{content:'';width:22px;height:1.5px;background:var(--gold)}
+.sec-label{font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.sec-label::before{content:'';width:22px;height:1.5px;background:var(--acc)}
 .sec-h2{font-size:clamp(34px,5vw,60px);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1.04}
-.sec-h2 em{font-style:normal;color:var(--gold)}
+.sec-h2 em{font-style:normal;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* BEFORE/AFTER SLIDER */
 .ba-tabs{display:flex;gap:6px;margin-bottom:32px;flex-wrap:wrap}
 .ba-tab{padding:8px 20px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--g2);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font)}
 .ba-tab:hover{border-color:var(--border2);color:#fff}
-.ba-tab.active{background:var(--golddim);border-color:rgba(245,166,35,.35);color:var(--gold)}
+.ba-tab.active{background:var(--accdim);border-color:rgba(0,212,255,.35);color:var(--acc)}
 .slider-wrap{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;user-select:none;touch-action:none;background:var(--bg3);border:1px solid var(--border)}
 .s-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 .s-after{clip-path:inset(0 50% 0 0)}
-.s-div{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gold);transform:translateX(-50%);cursor:ew-resize;z-index:10}
-.s-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;background:var(--gold);box-shadow:0 0 24px rgba(245,166,35,.6);display:flex;align-items:center;justify-content:center;cursor:ew-resize;font-weight:800;font-size:14px;color:#000}
-.s-lbl{position:absolute;top:16px;z-index:5;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;border-radius:6px;backdrop-filter:blur(8px);pointer-events:none}
-.s-lbl.b{left:16px;background:rgba(0,0,0,.65);color:var(--g2);border:1px solid rgba(255,255,255,.1)}
-.s-lbl.a{right:16px;background:rgba(245,166,35,.15);color:var(--gold);border:1px solid rgba(245,166,35,.3)}
+.s-div{position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(180deg,transparent,var(--acc) 20%,var(--acc) 80%,transparent);transform:translateX(-50%);cursor:ew-resize;z-index:10}
+.s-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 0 0 4px rgba(255,255,255,.05),0 0 32px rgba(0,212,255,.6),0 4px 12px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;cursor:ew-resize;color:#fff;transition:transform .2s}
+.s-handle:hover{transform:translate(-50%,-50%) scale(1.1)}
+.s-lbl{position:absolute;top:16px;z-index:5;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:6px;backdrop-filter:blur(12px);pointer-events:none}
+.s-lbl.b{left:16px;background:rgba(0,0,0,.65);color:var(--g1);border:1px solid rgba(255,255,255,.15)}
+.s-lbl.a{right:16px;background:rgba(0,212,255,.15);color:var(--acc);border:1px solid rgba(0,212,255,.35)}
+
+/* Mobile labels (hidden on desktop) */
+.ba-mobile-labels{display:none;gap:10px;margin-bottom:14px}
+.ba-mlbl{flex:1;text-align:center;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 10px;border-radius:8px}
+.ba-mlbl.before{background:rgba(255,255,255,.04);color:var(--g2);border:1px solid rgba(255,255,255,.1)}
+.ba-mlbl.after{background:rgba(0,212,255,.12);color:var(--acc);border:1px solid rgba(0,212,255,.3)}
 .s-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg3);z-index:20;transition:opacity .3s}
-.spinner{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--gold);border-radius:50%;animation:spin .7s linear infinite}
+.spinner{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--acc);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .update-hint{margin-top:14px;padding:14px 20px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;font-size:12px;color:var(--g3);display:flex;align-items:center;gap:10px}
 code{color:var(--gold);background:rgba(245,166,35,.08);padding:1px 6px;border-radius:4px;font-size:11px}
@@ -109,23 +168,25 @@ code{color:var(--gold);background:rgba(245,166,35,.08);padding:1px 6px;border-ra
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px}
 .step{padding:40px 32px;background:var(--bg3);border:1px solid var(--border);position:relative;transition:border-color .25s,background .25s}
 .step:first-child{border-radius:16px 0 0 16px}.step:last-child{border-radius:0 16px 16px 0}
-.step:hover{border-color:rgba(245,166,35,.3);background:var(--bg4)}
-.step-n{font-size:60px;font-weight:800;color:rgba(245,166,35,.07);position:absolute;top:14px;right:18px;line-height:1}
-.step-ico{font-size:28px;margin-bottom:20px}
-.step-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.step:hover{border-color:rgba(0,212,255,.3);background:var(--bg4)}
+.step-n{font-size:60px;font-weight:800;color:rgba(0,212,255,.07);position:absolute;top:14px;right:18px;line-height:1}
+.step-ico{margin-bottom:20px;display:inline-flex;width:48px;height:48px;border-radius:12px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.15);align-items:center;justify-content:center}
+.step-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
 .step-t{font-size:20px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.02em}
 .step-d{font-size:14px;color:var(--g2);line-height:1.7}
-.step-tm{display:inline-flex;margin-top:14px;font-size:11px;font-weight:600;color:var(--gold);background:var(--golddim);border:1px solid rgba(245,166,35,.2);padding:3px 10px;border-radius:10px}
+.step-tm{display:inline-flex;margin-top:14px;font-size:11px;font-weight:600;color:var(--acc);background:var(--accdim);border:1px solid rgba(0,212,255,.2);padding:3px 10px;border-radius:10px}
 
 /* STORE */
 .store-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border)}
 .stabs{display:flex;gap:6px;margin-bottom:32px;flex-wrap:wrap}
 .stab{padding:8px 18px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--g2);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font)}
 .stab:hover{border-color:var(--border2);color:#fff}
-.stab.active{background:var(--golddim);border-color:rgba(245,166,35,.35);color:var(--gold)}
+.stab.active{background:var(--accdim);border-color:rgba(0,212,255,.35);color:var(--acc)}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.prod{background:var(--bg3);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s,box-shadow .25s}
-.prod:hover{border-color:rgba(245,166,35,.3);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.prod{background:var(--bg3);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative}
+.prod::before{content:'';position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,transparent,rgba(0,212,255,.05) 50%,transparent);opacity:0;transition:opacity .3s;pointer-events:none}
+.prod:hover{border-color:rgba(0,212,255,.3);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(0,212,255,.08)}
+.prod:hover::before{opacity:1}
 .prod-thumb{aspect-ratio:16/9;overflow:hidden;position:relative;background:var(--bg4);display:flex;align-items:center;justify-content:center}
 .prod-thumb img{width:100%;height:100%;object-fit:cover}
 .prod-ph{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--g3);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
@@ -134,24 +195,24 @@ code{color:var(--gold);background:rgba(245,166,35,.08);padding:1px 6px;border-ra
 .bf{background:rgba(48,209,88,.12);color:var(--green);border:1px solid rgba(48,209,88,.25)}
 .bn{background:rgba(58,122,255,.12);color:#6aa3ff;border:1px solid rgba(58,122,255,.25)}
 .prod-body{padding:18px;flex:1;display:flex;flex-direction:column}
-.prod-cat{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.prod-cat{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
 .prod-name{font-size:16px;font-weight:700;color:#fff;letter-spacing:-.02em;margin-bottom:6px}
 .prod-desc{font-size:13px;color:var(--g2);line-height:1.6;flex:1;margin-bottom:14px}
 .prod-foot{display:flex;align-items:center;justify-content:space-between;padding:14px 18px;border-top:1px solid var(--border)}
 .prod-price{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.02em}
 .prod-price.free{color:var(--green);font-size:16px}
 .prod-price small{font-size:11px;color:var(--g3);font-weight:400;margin-left:2px}
-.btn-buy{display:inline-flex;align-items:center;gap:6px;background:var(--gold);color:#000;font-size:12px;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;transition:all .2s;white-space:nowrap;border:none;cursor:pointer;font-family:var(--font)}
-.btn-buy:hover{background:var(--gold2);transform:scale(1.04)}
+.btn-buy{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:12px;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;transition:all .2s;white-space:nowrap;border:none;cursor:pointer;font-family:var(--font);box-shadow:0 2px 12px rgba(0,212,255,.2)}
+.btn-buy:hover{box-shadow:0 4px 20px rgba(0,212,255,.4);transform:scale(1.04)}
 .btn-free{background:rgba(48,209,88,.1);color:var(--green);border:1px solid rgba(48,209,88,.25)}
 .btn-free:hover{background:rgba(48,209,88,.2)}
 
 /* PRICING */
-.price-card{max-width:600px;margin:56px auto 0;background:var(--bg3);border:1px solid rgba(245,166,35,.3);border-radius:20px;padding:52px;position:relative;overflow:hidden;text-align:center}
-.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold) 50%,transparent)}
+.price-card{max-width:600px;margin:56px auto 0;background:var(--bg3);border:1px solid rgba(0,212,255,.3);border-radius:20px;padding:52px;position:relative;overflow:hidden;text-align:center}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--acc) 50%,transparent)}
 .price-was{font-size:15px;color:var(--g3);text-decoration:line-through;margin-bottom:4px}
 .price-now{font-size:88px;font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1;display:flex;align-items:flex-start;justify-content:center;gap:2px}
-.price-curr{font-size:32px;font-weight:700;color:var(--gold);margin-top:14px}
+.price-curr{font-size:32px;font-weight:700;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-top:14px}
 .price-usd{font-size:18px;color:var(--g2);font-weight:400;align-self:flex-end;margin-bottom:8px;margin-left:4px}
 .price-note{font-size:12px;color:var(--g3);letter-spacing:.08em;text-transform:uppercase;margin-top:8px;margin-bottom:36px}
 .price-inc{display:grid;grid-template-columns:1fr 1fr;gap:10px;text-align:left;margin-bottom:36px}
@@ -162,22 +223,22 @@ code{color:var(--gold);background:rgba(245,166,35,.08);padding:1px 6px;border-ra
 /* FAQ */
 .faq-item{border-bottom:1px solid var(--border)}
 .faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;text-align:left;font-size:16px;font-weight:500;color:var(--g1);font-family:var(--font);transition:color .2s}
-.faq-q:hover{color:#fff}.faq-q.open{color:var(--gold)}
+.faq-q:hover{color:#fff}.faq-q.open{color:var(--acc)}
 .faq-ico{width:24px;height:24px;border-radius:6px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--g2);transition:transform .3s,border-color .3s}
-.faq-q.open .faq-ico{transform:rotate(45deg);border-color:rgba(245,166,35,.4)}
+.faq-q.open .faq-ico{transform:rotate(45deg);border-color:rgba(0,212,255,.4);color:var(--acc)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);font-size:15px;color:var(--g2);line-height:1.75}
 .faq-a.open{max-height:300px;padding-bottom:22px}
 
 /* FINAL CTA */
-.final-cta{padding:140px 40px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(245,166,35,.08) 0%,transparent 70%),var(--bg);border-top:1px solid var(--border)}
+.final-cta{padding:140px 40px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(0,212,255,.08) 0%,transparent 70%),var(--bg);border-top:1px solid var(--border)}
 .final-cta h2{font-size:clamp(42px,7.5vw,96px);font-weight:800;letter-spacing:-.045em;color:#fff;line-height:.96;margin-bottom:20px}
-.gg{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gg{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
 /* FOOTER */
 footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px 32px}
 .foot-in{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
 .foot-logo{font-size:17px;font-weight:700;letter-spacing:-.03em}
-.foot-logo .w{color:#fff}.foot-logo .y{color:var(--gold)}
+.foot-logo .w{color:#fff}.foot-logo .y{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .foot-links{display:flex;gap:24px;flex-wrap:wrap}
 .foot-links a{font-size:13px;color:var(--g3);text-decoration:none;transition:color .2s}
 .foot-links a:hover{color:#fff}
@@ -192,20 +253,112 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
 .reveal.visible{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.07s}.d2{transition-delay:.14s}.d3{transition-delay:.21s}
 
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+/* MOBILE-FIRST OPTIMIZATION       */
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media(max-width:900px){
-  nav{padding:0 20px}
-  .hero{padding:100px 20px 60px}
-  .hero h1{font-size:44px}
-  .plugin-grid{grid-template-columns:1fr;gap:40px}
-  .steps-grid{grid-template-columns:1fr;gap:2px}
-  .step:first-child{border-radius:16px 16px 0 0}
-  .step:last-child{border-radius:0 0 16px 16px}
-  .prod-grid{grid-template-columns:1fr}
-  .price-inc{grid-template-columns:1fr}
-  .store-hdr{flex-direction:column;align-items:flex-start;gap:16px}
-  .foot-in{flex-direction:column;align-items:flex-start}
-  .sticky{padding:12px 20px;gap:12px}
-  .sec{padding:80px 20px}
+  body{font-size:16px}
+  
+  /* NAV mobile */
+  nav{padding:0 18px;height:52px}
+  .nav-logo{font-size:16px}
+  .nav-links a:not(.nav-buy){display:none}
+  .nav-buy{font-size:12px!important;padding:7px 14px!important}
+  
+  /* HERO mobile */
+  .hero{padding:90px 20px 60px;min-height:auto}
+  .hero-badge{font-size:10px;padding:6px 14px;margin-bottom:20px}
+  .hero h1{font-size:42px;line-height:1.05}
+  .hero-sub{font-size:16px;margin-top:18px;padding:0 8px}
+  .hero-ctas{margin-top:32px;gap:10px;width:100%}
+  .btn-gold{padding:14px 22px;font-size:14px;width:100%;justify-content:center}
+  .btn-out{padding:13px 22px;font-size:14px;width:100%;justify-content:center}
+  .hero-checks{margin-top:28px;gap:14px}
+  .chk{font-size:11px}
+  .hero-img{margin-top:48px}
+  
+  /* SECTIONS mobile */
+  .sec{padding:64px 20px}
+  .sec-h2{font-size:32px}
+  .sec-label{font-size:10px;letter-spacing:.1em}
+  
+  /* BEFORE/AFTER mobile - labels OUTSIDE the image */
+  .ba-mobile-labels{display:flex}
+  .s-lbl{display:none}
+  .ba-tabs{gap:6px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;margin:-4px -20px 24px;padding:0 20px 8px}
+  .ba-tabs::-webkit-scrollbar{display:none}
+  .ba-tab{padding:7px 16px;font-size:12px;flex-shrink:0;white-space:nowrap}
+  .s-handle{width:42px;height:42px}
+  .slider-wrap{aspect-ratio:4/3}
+  
+  /* PLUGIN section mobile */
+  .plugin-grid{grid-template-columns:1fr;gap:32px}
+  .icon-box{width:38px;height:38px}
+  .feat-t{font-size:14px}
+  .feat-d{font-size:12.5px}
+  
+  /* STEPS mobile */
+  .steps-grid{grid-template-columns:1fr;gap:2px;margin-top:36px}
+  .step{padding:28px 22px}
+  .step:first-child{border-radius:14px 14px 0 0}
+  .step:last-child{border-radius:0 0 14px 14px}
+  .step-n{font-size:48px;top:10px;right:14px}
+  
+  /* STORE mobile */
+  .store-hdr{flex-direction:column;align-items:flex-start;gap:14px;margin-bottom:28px}
+  .stabs{gap:6px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px 24px;padding:0 20px 8px}
+  .stabs::-webkit-scrollbar{display:none}
+  .stab{padding:7px 16px;font-size:12px;flex-shrink:0;white-space:nowrap}
+  .prod-grid{grid-template-columns:1fr;gap:14px}
+  .prod{border-radius:16px}
+  .prod-thumb{aspect-ratio:16/10}
+  .prod-icon-svg{width:54px;height:54px}
+  .prod-body{padding:16px}
+  .prod-name{font-size:17px}
+  .prod-desc{font-size:13px;line-height:1.55}
+  .prod-foot{padding:14px 16px}
+  .prod-price{font-size:22px}
+  .btn-buy{padding:10px 20px;font-size:13px}
+  
+  /* PRICING mobile */
+  .price-card{padding:36px 22px;margin-top:36px;border-radius:16px}
+  .price-now{font-size:64px}
+  .price-curr{font-size:24px}
+  .price-inc{grid-template-columns:1fr;gap:8px;margin-bottom:28px}
+  .inc{font-size:13px}
+  .guarantee{font-size:12px;line-height:1.5;text-align:left}
+  
+  /* FAQ mobile */
+  .faq-q{font-size:14px;padding:18px 0;gap:14px}
+  .faq-a{font-size:14px}
+  
+  /* FINAL CTA mobile */
+  .final-cta{padding:80px 20px}
+  .final-cta h2{font-size:42px}
+  
+  /* FOOTER mobile */
+  footer{padding:36px 20px 24px}
+  .foot-in{flex-direction:column;align-items:flex-start;gap:18px}
+  .foot-links{gap:18px}
+  .foot-links a{font-size:12px}
+  
+  /* STICKY mobile */
+  .sticky{padding:10px 14px;gap:10px;flex-wrap:wrap;justify-content:space-between}
+  .sticky > span:first-child{font-size:12px;flex:1;min-width:0}
+  .sticky .btn-gold{padding:9px 16px!important;font-size:12px!important;flex-shrink:0;width:auto!important}
+  .sticky > span:last-child{display:none}
+  
+  /* TICKER mobile */
+  .ti{font-size:10.5px;padding:0 18px;gap:18px}
+  
+  /* MODAL mobile */
+  #dl-modal > div{padding:32px 20px}
+}
+@media(max-width:380px){
+  .hero h1{font-size:36px}
+  .sec-h2{font-size:28px}
+  .final-cta h2{font-size:36px}
+  .price-now{font-size:54px}
 }
 </style>
 </head>
@@ -268,17 +421,20 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
       <button class="ba-tab" onclick="loadBA(4,this)">Ejemplo 5</button>
       <button class="ba-tab" onclick="loadBA(5,this)">Ejemplo 6</button>
     </div>
+    <!-- Slider labels OUTSIDE for mobile readability -->
+    <div class="ba-mobile-labels reveal">
+      <span class="ba-mlbl before">Antes · LOG</span>
+      <span class="ba-mlbl after">Después · OneClick Grade</span>
+    </div>
     <div class="slider-wrap reveal" id="sw">
       <div class="s-loader" id="sl"><div class="spinner"></div></div>
       <img id="ib" class="s-img" src="" alt="Antes"/>
       <img id="ia" class="s-img s-after" src="" alt="Después"/>
       <span class="s-lbl b">Antes · LOG</span>
       <span class="s-lbl a">Después · OneClick Grade</span>
-      <div class="s-div" id="sd"><div class="s-handle">↔</div></div>
-    </div>
-    <div class="update-hint reveal">
-      <span style="color:var(--gold);font-size:18px">💡</span>
-      <span>Para actualizar: sube tus fotos a <code>images/before/</code> y <code>images/after/</code> en GitHub con nombres <code>1.jpg</code> <code>2.jpg</code> ... <code>6.jpg</code></span>
+      <div class="s-div" id="sd"><div class="s-handle">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 4L2 7l3 3M9 4l3 3-3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div></div>
     </div>
   </div>
 </section>
@@ -304,9 +460,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
         <h2 class="sec-h2 reveal d1">Un nodo.<br/><em>Todo el poder.</em></h2>
         <p style="font-size:16px;color:var(--g2);line-height:1.75;margin-top:20px" class="reveal d2">Arrastra OneClick Grade a tu árbol de nodos, elige tu cámara y selecciona uno de los 51 looks. Conversión LOG, corrección y look creativo en un solo paso.</p>
         <div style="margin-top:36px" class="reveal d3">
-          <div class="feat"><div class="feat-ico">⚡</div><div><div class="feat-t">Conversión LOG automática</div><div class="feat-d">Sony, Canon, DJI, Blackmagic y más. Selecciona tu cámara y el plugin aplica la conversión correcta.</div></div></div>
-          <div class="feat"><div class="feat-ico">🎨</div><div><div class="feat-t">51 looks cinematográficos</div><div class="feat-d">Desde Teal & Orange hasta Film Noir. Todos calibrados, sin archivos externos.</div></div></div>
-          <div class="feat"><div class="feat-ico">🎚</div><div><div class="feat-t">Control de intensidad</div><div class="feat-d">Un slider para mezclar el look con el original. Sutil o impactante, tú decides.</div></div></div>
+          <div class="feat"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 L4 13 H11 L9 22 L20 11 H13 L13 2Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="rgba(0,212,255,0.1)"/></svg></div><div><div class="feat-t">Conversión LOG automática</div><div class="feat-d">Sony, Canon, DJI, Blackmagic y más. Selecciona tu cámara y el plugin aplica la conversión correcta.</div></div></div>
+          <div class="feat"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/><circle cx="15" cy="9" r="1.5" fill="currentColor" opacity="0.6"/><circle cx="15" cy="15" r="1.5" fill="currentColor" opacity="0.4"/><circle cx="9" cy="15" r="1.5" fill="currentColor" opacity="0.7"/></svg></div><div><div class="feat-t">51 looks cinematográficos</div><div class="feat-d">Desde Teal & Orange hasta Film Noir. Todos calibrados, sin archivos externos.</div></div></div>
+          <div class="feat"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7 H20 M4 12 H20 M4 17 H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="9" cy="7" r="2" fill="var(--bg3)" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="12" r="2" fill="var(--bg3)" stroke="currentColor" stroke-width="1.6"/><circle cx="7" cy="17" r="2" fill="var(--bg3)" stroke="currentColor" stroke-width="1.6"/></svg></div><div><div class="feat-t">Control de intensidad</div><div class="feat-d">Un slider para mezclar el look con el original. Sutil o impactante, tú decides.</div></div></div>
         </div>
       </div>
     </div>
@@ -350,13 +506,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
     <div class="sec-label reveal" style="justify-content:center">Flujo de trabajo</div>
     <h2 class="sec-h2 reveal d1">3 pasos. <em>5 minutos.</em></h2>
     <div class="steps-grid" style="text-align:left">
-      <div class="step reveal d1"><div class="step-n">01</div><div class="step-ico">↓</div><div class="step-lbl">Paso 01</div><div class="step-t">Instala</div><div class="step-d">Al comprar recibes un instalador para Mac o Windows. Haces doble clic y se instala todo automáticamente. Sin configuración.</div><div class="step-tm">~2 min</div></div>
-      <div class="step reveal d2"><div class="step-n">02</div><div class="step-ico">⊕</div><div class="step-lbl">Paso 02</div><div class="step-t">Aplica</div><div class="step-d">Arrastra el nodo OFX. Selecciona tu cámara y el look que quieres.</div><div class="step-tm">~2 min</div></div>
-      <div class="step reveal d3"><div class="step-n">03</div><div class="step-ico">✦</div><div class="step-lbl">Paso 03</div><div class="step-t">Exporta</div><div class="step-d">Ajusta la intensidad. Cuando te guste, exportas. Simple.</div><div class="step-tm">~1 min</div></div>
+      <div class="step reveal d1"><div class="step-n">01</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 3 V15 M6 11 L12 17 L18 11 M3 19 H21" stroke="url(#stepg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="stepg" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#00D4FF"/><stop offset="100%" stop-color="#7B61FF"/></linearGradient></defs></svg></div><div class="step-lbl">Paso 01</div><div class="step-t">Instala</div><div class="step-d">Al comprar recibes un instalador para Mac o Windows. Haces doble clic y se instala todo automáticamente. Sin configuración.</div><div class="step-tm">~2 min</div></div>
+      <div class="step reveal d2"><div class="step-n">02</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="url(#stepg)" stroke-width="2"/><path d="M12 7 V17 M7 12 H17" stroke="url(#stepg)" stroke-width="2" stroke-linecap="round"/></svg></div><div class="step-lbl">Paso 02</div><div class="step-t">Aplica</div><div class="step-d">Arrastra el nodo OFX. Selecciona tu cámara y el look que quieres.</div><div class="step-tm">~2 min</div></div>
+      <div class="step reveal d3"><div class="step-n">03</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2 L14.5 9 L22 9.5 L16.5 14 L18.5 22 L12 17.5 L5.5 22 L7.5 14 L2 9.5 L9.5 9 L12 2Z" stroke="url(#stepg)" stroke-width="2" stroke-linejoin="round" fill="rgba(0,212,255,0.1)"/></svg></div><div class="step-lbl">Paso 03</div><div class="step-t">Exporta</div><div class="step-d">Ajusta la intensidad. Cuando te guste, exportas. Simple.</div><div class="step-tm">~1 min</div></div>
     </div>
-    <div class="reveal" style="margin-top:16px;background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.2);border-radius:12px;padding:20px 32px;display:flex;align-items:center;justify-content:space-between">
+    <div class="reveal" style="margin-top:16px;background:linear-gradient(135deg,rgba(0,212,255,.08),rgba(123,97,255,.04));border:1px solid rgba(0,212,255,.2);border-radius:12px;padding:20px 32px;display:flex;align-items:center;justify-content:space-between">
       <span style="font-size:15px;font-weight:500;color:var(--g1)">Tiempo total de color grading</span>
-      <span style="font-size:22px;font-weight:800;color:var(--gold);letter-spacing:-.02em">~5 minutos ✦</span>
+      <span style="font-size:22px;font-weight:800;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.02em">~5 minutos</span>
     </div>
   </div>
 </section>
@@ -382,40 +538,40 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
       <div class="prod" data-cat="plugin"><div class="prod-thumb"><img src="images/plugin-ui.png" alt="OneClick Grade"/><span class="badge bg">Más vendido</span></div><div class="prod-body"><div class="prod-cat">Plugin OFX · DaVinci Resolve</div><div class="prod-name">OneClick Grade</div><div class="prod-desc">51 LUTs cinematográficos integrados. Convierte LOG a color cinematográfico y aplica look creativo en un solo nodo.</div></div><div class="prod-foot"><div><div class="prod-price">$49<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="https://pay.hotmart.com/A105479773D?checkoutMode=2" class="btn-buy hotmart-fb hotmart__button-checkout" onclick="return false;">Comprar →</a></div></div>
 
       <!-- Combo -->
-      <div class="prod" data-cat="plugin dctl" style="border-color:rgba(245,166,35,.25)"><div class="prod-thumb" style="background:linear-gradient(135deg,#0d1020,#1a1408)"><div class="prod-ph"><div style="font-size:32px">⚡</div><div>OneClick Grade + DCTL</div></div><span class="badge bg">Combo</span></div><div class="prod-body"><div class="prod-cat">Plugin OFX + DCTL · DaVinci Resolve</div><div class="prod-name">Combo Profesional</div><div class="prod-desc">El flujo completo de 3 nodos: exposición → OneClick Grade → Film Look Finisher. El resultado cinematográfico definitivo.</div><div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><span style="font-size:10px;background:rgba(245,166,35,.1);color:var(--gold);border:1px solid rgba(245,166,35,.2);padding:2px 8px;border-radius:4px">Plugin OFX</span><span style="font-size:10px;background:rgba(245,166,35,.1);color:var(--gold);border:1px solid rgba(245,166,35,.2);padding:2px 8px;border-radius:4px">DCTL incluido</span></div></div><div class="prod-foot"><div><div class="prod-price" style="color:var(--gold)">$49<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Ahorra $10 vs. separados</div></div><a href="https://pay.hotmart.com/A105479773D?checkoutMode=2" class="btn-buy hotmart-fb hotmart__button-checkout" onclick="return false;">Comprar →</a></div></div>
+      <div class="prod" data-cat="plugin dctl" style="border-color:rgba(245,166,35,.3)"><div class="prod-thumb"><div class="prod-icon-bg gold"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg gold" viewBox="0 0 64 64" fill="none"><path d="M32 4L8 18v28l24 14 24-14V18L32 4z" stroke="url(#gg1)" stroke-width="1.5" fill="rgba(245,166,35,0.06)"/><path d="M32 4v56M8 18l24 14 24-14M8 46l24-14 24 14" stroke="url(#gg1)" stroke-width="1.5" stroke-linecap="round"/><defs><linearGradient id="gg1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#FFD173"/><stop offset="100%" stop-color="#F5A623"/></linearGradient></defs></svg></div><span class="badge bg">Combo</span></div><div class="prod-body"><div class="prod-cat" style="color:var(--gold)">Plugin OFX + DCTL · DaVinci Resolve</div><div class="prod-name">Combo Profesional</div><div class="prod-desc">El flujo completo de 3 nodos: exposición → OneClick Grade → Film Look Finisher. El resultado cinematográfico definitivo.</div><div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><span style="font-size:10px;background:rgba(245,166,35,.1);color:var(--gold);border:1px solid rgba(245,166,35,.2);padding:2px 8px;border-radius:4px">Plugin OFX</span><span style="font-size:10px;background:rgba(245,166,35,.1);color:var(--gold);border:1px solid rgba(245,166,35,.2);padding:2px 8px;border-radius:4px">DCTL incluido</span></div></div><div class="prod-foot"><div><div class="prod-price" style="color:var(--gold)">$49<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Ahorra $10 vs. separados</div></div><a href="https://pay.hotmart.com/A105479773D?checkoutMode=2" class="btn-buy hotmart-fb hotmart__button-checkout" style="background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;box-shadow:0 2px 12px rgba(245,166,35,.3)" onclick="return false;">Comprar →</a></div></div>
 
       <!-- Film Look Finisher DCTL solo -->
       <div class="prod" data-cat="dctl"><div class="prod-thumb"><img src="images/dctl-ui.png" alt="Film Look Finisher"/><span class="badge bn">Solo DCTL</span></div><div class="prod-body"><div class="prod-cat">DCTL · DaVinci Resolve</div><div class="prod-name">Film Look Finisher</div><div class="prod-desc">Densidad de color estilo Hollywood, lavar negros, look mate en altas luces y split toning intuitivo. El tercer nodo del flujo profesional.</div></div><div class="prod-foot"><div><div class="prod-price">$28<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Solo DCTL · instalación manual</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
 
       <!-- Proxymiti -->
-      <div class="prod" data-cat="script ae"><div class="prod-thumb" style="background:linear-gradient(135deg,#0d0a20,#1a0f30)"><div class="prod-ph"><div style="font-size:32px">📐</div><div>Proxymiti</div></div></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">Proxymiti</div><div class="prod-desc">Script para After Effects que interactúa y gestiona automáticamente los elementos que se acercan al encuadre. Control inteligente de proximidad.</div></div><div class="prod-foot"><div><div class="prod-price">$22<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
+      <div class="prod" data-cat="script ae"><div class="prod-thumb"><div class="prod-icon-bg purple"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg purple" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="6" fill="url(#pp1)"/><circle cx="32" cy="32" r="14" stroke="url(#pp1)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/><circle cx="32" cy="32" r="22" stroke="url(#pp1)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.4"/><circle cx="32" cy="32" r="30" stroke="url(#pp1)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.2"/><defs><linearGradient id="pp1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#7B61FF"/><stop offset="100%" stop-color="#00D4FF"/></linearGradient></defs></svg></div></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">Proxymiti</div><div class="prod-desc">Script para After Effects que interactúa y gestiona automáticamente los elementos que se acercan al encuadre. Control inteligente de proximidad.</div></div><div class="prod-foot"><div><div class="prod-price">$22<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
 
       <!-- OC-GLAS -->
-      <div class="prod" data-cat="script ae free"><div class="prod-thumb" style="background:linear-gradient(135deg,#0a1520,#0d2030)"><div class="prod-ph"><div style="font-size:32px">🫧</div><div>OC - GLAS</div></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">OC - GLAS</div><div class="prod-desc">Script para After Effects que emula el efecto Liquid Glass de Apple. Da a tus composiciones ese acabado translúcido y moderno directamente en AE.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'OC-GLAS');return false;">Descargar →</a></div></div>
+      <div class="prod" data-cat="script ae free"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="og1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#00D4FF"/><stop offset="100%" stop-color="#7B61FF"/></linearGradient><radialGradient id="og2"><stop offset="0%" stop-color="rgba(255,255,255,0.4)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><rect x="10" y="14" width="44" height="36" rx="14" stroke="url(#og1)" stroke-width="1.5" fill="rgba(0,212,255,0.08)"/><ellipse cx="22" cy="24" rx="6" ry="3" fill="url(#og2)"/><rect x="14" y="18" width="36" height="28" rx="10" stroke="url(#og1)" stroke-width="1" opacity="0.4" fill="none"/></svg></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">OC - GLAS</div><div class="prod-desc">Script para After Effects que emula el efecto Liquid Glass de Apple. Da a tus composiciones ese acabado translúcido y moderno directamente en AE.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'OC-GLAS');return false;">Descargar →</a></div></div>
 
       <!-- Carrusels -->
-      <div class="prod" data-cat="script ae"><div class="prod-thumb" style="background:linear-gradient(135deg,#1a0a0a,#300a15)"><div class="prod-ph"><div style="font-size:32px">🎠</div><div>Carrusels</div></div></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">Carrusels</div><div class="prod-desc">Genera carruseles 3D de manera automática en After Effects. Elige tus imágenes, ajusta parámetros y el script construye el carrusel por ti.</div></div><div class="prod-foot"><div><div class="prod-price">$17<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
+      <div class="prod" data-cat="script ae"><div class="prod-thumb"><div class="prod-icon-bg pink"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg pink" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="cr1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#FF5096"/><stop offset="100%" stop-color="#7B61FF"/></linearGradient></defs><ellipse cx="32" cy="32" rx="26" ry="10" stroke="url(#cr1)" stroke-width="1.5" fill="none" opacity="0.4"/><rect x="20" y="22" width="10" height="14" rx="2" stroke="url(#cr1)" stroke-width="1.5" fill="rgba(255,80,150,0.1)"/><rect x="34" y="22" width="10" height="14" rx="2" stroke="url(#cr1)" stroke-width="1.5" fill="rgba(255,80,150,0.15)"/><rect x="48" y="26" width="6" height="10" rx="1" stroke="url(#cr1)" stroke-width="1" fill="none" opacity="0.5"/><rect x="10" y="26" width="6" height="10" rx="1" stroke="url(#cr1)" stroke-width="1" fill="none" opacity="0.5"/></svg></div></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">Carrusels</div><div class="prod-desc">Genera carruseles 3D de manera automática en After Effects. Elige tus imágenes, ajusta parámetros y el script construye el carrusel por ti.</div></div><div class="prod-foot"><div><div class="prod-price">$17<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
 
       <!-- OC-Smooth -->
-      <div class="prod" data-cat="script ae free"><div class="prod-thumb" style="background:linear-gradient(135deg,#0a1a0a,#0f2a10)"><div class="prod-ph"><div style="font-size:32px">〜</div><div>OC - Smooth</div></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">OC - Smooth</div><div class="prod-desc">Controla la suavidad de las curvas de animación en After Effects de forma visual e intuitiva. Animaciones más fluidas en segundos.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'OC-Smooth');return false;">Descargar →</a></div></div>
+      <div class="prod" data-cat="script ae free"><div class="prod-thumb"><div class="prod-icon-bg green"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg green" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="sm1" x1="0" y1="0" x2="64" y2="0"><stop offset="0%" stop-color="#30d158"/><stop offset="100%" stop-color="#00D4FF"/></linearGradient></defs><path d="M6 44 Q 18 12, 32 32 T 58 20" stroke="url(#sm1)" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="6" cy="44" r="3" fill="#30d158"/><circle cx="32" cy="32" r="3" fill="#30d158" opacity="0.7"/><circle cx="58" cy="20" r="3" fill="#00D4FF"/><path d="M6 50 L58 50" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="2 4"/></svg></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">OC - Smooth</div><div class="prod-desc">Controla la suavidad de las curvas de animación en After Effects de forma visual e intuitiva. Animaciones más fluidas en segundos.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'OC-Smooth');return false;">Descargar →</a></div></div>
 
       <!-- Control de Finanzas -->
-      <div class="prod" data-cat="herramienta"><div class="prod-thumb" style="background:linear-gradient(135deg,#0a1510,#102008)"><div class="prod-ph"><div style="font-size:32px">💼</div><div>Control de Finanzas</div></div></div><div class="prod-body"><div class="prod-cat">Herramienta · Freelancer</div><div class="prod-name">Control de Finanzas</div><div class="prod-desc">Sistema de control financiero diseñado para freelancers creativos. Gestiona ingresos, gastos, clientes y proyectos en un solo lugar.</div></div><div class="prod-foot"><div><div class="prod-price">$27<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
+      <div class="prod" data-cat="herramienta"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="cf1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#00D4FF"/><stop offset="100%" stop-color="#7B61FF"/></linearGradient></defs><rect x="8" y="44" width="8" height="14" rx="2" fill="url(#cf1)" opacity="0.4"/><rect x="20" y="32" width="8" height="26" rx="2" fill="url(#cf1)" opacity="0.6"/><rect x="32" y="38" width="8" height="20" rx="2" fill="url(#cf1)" opacity="0.5"/><rect x="44" y="20" width="8" height="38" rx="2" fill="url(#cf1)"/><path d="M10 38 L24 30 L36 34 L48 14" stroke="url(#cf1)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="14" r="3" fill="#00D4FF"/></svg></div></div><div class="prod-body"><div class="prod-cat">Herramienta · Freelancer</div><div class="prod-name">Control de Finanzas</div><div class="prod-desc">Sistema de control financiero diseñado para freelancers creativos. Gestiona ingresos, gastos, clientes y proyectos en un solo lugar.</div></div><div class="prod-foot"><div><div class="prod-price">$27<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
 
-      <!-- OC-LiquidGlass DCTL -->
-      <div class="prod" data-cat="dctl free"><div class="prod-thumb" style="background:linear-gradient(135deg,#08101a,#0a1820)"><div class="prod-ph"><div style="font-size:32px">💧</div><div>Liquid Glass DCTL</div></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">DCTL · DaVinci Resolve</div><div class="prod-name">Liquid Glass</div><div class="prod-desc">DCTL para DaVinci Resolve que reproduce el efecto Liquid Glass en tu footage. El look translúcido más moderno del momento, listo en un nodo.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'Liquid-Glass-DCTL');return false;">Descargar →</a></div></div>
+      <!-- Liquid Glass DCTL -->
+      <div class="prod" data-cat="dctl free"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="lg1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#00D4FF"/><stop offset="100%" stop-color="#7B61FF"/></linearGradient><radialGradient id="lg2"><stop offset="0%" stop-color="rgba(255,255,255,0.5)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><path d="M32 6 C32 6, 14 28, 14 42 C14 52, 22 58, 32 58 C42 58, 50 52, 50 42 C50 28, 32 6, 32 6Z" stroke="url(#lg1)" stroke-width="1.5" fill="rgba(0,212,255,0.1)"/><ellipse cx="26" cy="32" rx="5" ry="8" fill="url(#lg2)"/><path d="M32 6 C32 6, 18 24, 18 38" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none"/></svg></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">DCTL · DaVinci Resolve</div><div class="prod-name">Liquid Glass</div><div class="prod-desc">DCTL para DaVinci Resolve que reproduce el efecto Liquid Glass en tu footage. El look translúcido más moderno del momento, listo en un nodo.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'Liquid-Glass-DCTL');return false;">Descargar →</a></div></div>
 
     </div>
 
     <!-- Free download modal -->
     <div id="dl-modal" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);align-items:center;justify-content:center">
       <div style="background:var(--bg3);border:1px solid rgba(245,166,35,.3);border-radius:16px;padding:44px;max-width:440px;width:90%;position:relative;text-align:center">
-        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold) 50%,transparent);border-radius:16px 16px 0 0"></div>
-        <div style="font-size:36px;margin-bottom:16px" id="dl-icon">🎁</div>
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--acc) 50%,transparent);border-radius:16px 16px 0 0"></div>
+        <div style="margin-bottom:16px;display:flex;justify-content:center" id="dl-icon"><div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(123,97,255,0.1));border:1px solid rgba(0,212,255,0.25);display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="13" rx="2" stroke="var(--acc)" stroke-width="1.6" fill="rgba(0,212,255,0.05)"/><path d="M3 12 H21" stroke="var(--acc)" stroke-width="1.6"/><path d="M12 8 V21" stroke="var(--acc)" stroke-width="1.6"/><path d="M12 8 C10 8, 7 5, 7 4 C7 3, 8 2.5, 9 3 C10 3.5, 12 6, 12 8 Z" stroke="var(--acc)" stroke-width="1.6" fill="rgba(0,212,255,0.1)"/><path d="M12 8 C14 8, 17 5, 17 4 C17 3, 16 2.5, 15 3 C14 3.5, 12 6, 12 8 Z" stroke="var(--acc)" stroke-width="1.6" fill="rgba(0,212,255,0.1)"/></svg></div></div>
         <h3 style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:8px" id="dl-title">Descargar gratis</h3>
         <p style="font-size:14px;color:var(--g2);line-height:1.65;margin-bottom:24px">Déjanos tu email y te enviamos el link de descarga inmediatamente.</p>
         <input id="dl-email" type="email" placeholder="tu@email.com" style="width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:13px 16px;font-size:14px;color:#fff;font-family:var(--font);outline:none;margin-bottom:12px"/>
-        <button onclick="submitFree()" style="width:100%;background:var(--gold);color:#000;font-size:14px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:var(--font);transition:background .2s" onmouseover="this.style.background='#FFD173'" onmouseout="this.style.background='var(--gold)'">Enviarme el link →</button>
+        <button onclick="submitFree()" style="width:100%;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:14px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:var(--font);transition:all .2s;box-shadow:0 4px 16px rgba(0,212,255,.25)">Enviarme el link →</button>
         <div id="dl-success" style="display:none;margin-top:16px;padding:12px;background:rgba(48,209,88,.1);border:1px solid rgba(48,209,88,.25);border-radius:8px;font-size:13px;color:#30d158">✓ ¡Listo! Revisa tu email en los próximos minutos.</div>
         <button onclick="closeDL()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:var(--g3);cursor:pointer;font-size:20px;line-height:1">×</button>
       </div>
@@ -446,7 +602,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
         Comprar ahora — $49 USD
         <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><path d="M2.5 7.5h10M7.5 2.5l5 5-5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <div class="guarantee"><span>🛡</span><span>Garantía 7 días · Si no mejora tu flujo, te devolvemos el dinero completo</span></div>
+      <div class="guarantee"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="flex-shrink:0"><path d="M7 1 L12 3 V7.5 C12 10.2, 9.8 12.4, 7 13 C4.2 12.4, 2 10.2, 2 7.5 V3 L7 1Z" stroke="var(--green)" stroke-width="1.4" fill="rgba(48,209,88,0.08)"/><path d="M5 7 L6.5 8.5 L9 6" stroke="var(--green)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg><span>Garantía 7 días · Si no mejora tu flujo, te devolvemos el dinero completo</span></div>
     </div>
   </div>
 </section>
@@ -484,15 +640,15 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
   <div class="foot-in">
     <div class="foot-logo"><span class="w">OneClick</span><span class="y">Tools</span></div>
     <div class="foot-links"><a href="#plugin">Plugin</a><a href="#tienda">Tienda</a><a href="#faq">FAQ</a><a href="#">Soporte</a><a href="#">Devoluciones</a></div>
-    <div class="foot-copy">© 2025 OCG Tools · Hecho para creadores ✦</div>
+    <div class="foot-copy">© 2025 OCG Tools · Hecho para creadores</div>
   </div>
 </footer>
 
 <!-- STICKY -->
 <div class="sticky" id="sticky-bar">
-  <span style="font-size:14px;color:var(--g2)">OneClick Grade · <span style="text-decoration:line-through;color:var(--g3)">$59</span> <span style="color:var(--gold);font-weight:700">$49</span></span>
+  <span style="font-size:14px;color:var(--g2)">OneClick Grade · <span style="text-decoration:line-through;color:var(--g3)">$59</span> <span style="background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-weight:700">$49</span></span>
   <a href="https://pay.hotmart.com/A105479773D?checkoutMode=2" class="btn-gold hotmart-fb hotmart__button-checkout" style="padding:10px 24px;font-size:13px" onclick="return false;">Comprar ahora →</a>
-  <span style="font-size:12px;color:var(--g3)">🛡 Garantía 7 días</span>
+  <span style="font-size:12px;color:var(--g3);display:inline-flex;align-items:center;gap:5px"><svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M7 1 L12 3 V7.5 C12 10.2, 9.8 12.4, 7 13 C4.2 12.4, 2 10.2, 2 7.5 V3 L7 1Z" stroke="var(--green)" stroke-width="1.4" fill="none"/></svg>Garantía 7 días</span>
 </div>
 
 <script>
