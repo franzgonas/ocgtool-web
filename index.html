@@ -266,6 +266,70 @@ code{color:var(--gold);background:rgba(245,166,35,.08);padding:1px 6px;border-ra
 .step-d{font-size:14px;color:var(--g2);line-height:1.7}
 .step-tm{display:inline-flex;margin-top:14px;font-size:11px;font-weight:600;color:var(--acc);background:var(--accdim);border:1px solid rgba(59,130,246,.2);padding:3px 10px;border-radius:10px}
 
+/* ── STEPS COMPACT MOBILE PANEL (plugin-UI style) ── */
+.steps-mobile{
+  display:none;
+  margin-top:36px;
+  background:linear-gradient(180deg,rgba(14,19,32,.8),rgba(8,11,22,.9));
+  border:1px solid rgba(59,130,246,.15);
+  border-radius:16px;
+  overflow:hidden;
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 0 1px rgba(59,130,246,.05);
+}
+.steps-mobile::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(59,130,246,.4) 50%,transparent);
+}
+.sm-row{
+  display:flex;align-items:center;gap:14px;
+  padding:16px 18px;
+  border-bottom:1px solid rgba(120,180,255,.06);
+}
+.sm-row:last-child{border-bottom:none}
+.sm-num{
+  width:32px;height:32px;border-radius:10px;
+  background:linear-gradient(135deg,rgba(59,130,246,.18),rgba(96,165,250,.08));
+  border:1px solid rgba(59,130,246,.25);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;
+  color:var(--acc-soft);
+  font-variant-numeric:tabular-nums;
+  flex-shrink:0;
+  letter-spacing:-.02em;
+}
+.sm-num-blank{
+  width:32px;height:32px;flex-shrink:0;
+}
+.sm-label{
+  flex:1;font-size:15px;font-weight:600;color:#fff;
+  letter-spacing:-.01em;
+  text-align:left;
+}
+.sm-time{
+  font-size:12px;font-weight:500;color:var(--g2);
+  font-variant-numeric:tabular-nums;
+  background:rgba(120,180,255,.05);
+  padding:4px 10px;border-radius:6px;
+  border:1px solid rgba(120,180,255,.08);
+  flex-shrink:0;
+}
+.sm-total{
+  background:linear-gradient(135deg,rgba(59,130,246,.06),rgba(96,165,250,.02));
+  border-top:1px solid rgba(59,130,246,.15)!important;
+}
+.sm-total .sm-label{color:var(--g2);font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+.sm-time-final{
+  font-size:18px;font-weight:800;
+  background:linear-gradient(135deg,var(--acc),var(--acc2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;
+  flex-shrink:0;
+}
+
 /* STORE */
 .store-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border)}
 .stabs{display:flex;gap:6px;margin-bottom:32px;flex-wrap:wrap}
@@ -484,12 +548,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
   .feat-t{font-size:14px}
   .feat-d{font-size:12.5px}
   
-  /* STEPS mobile */
-  .steps-grid{grid-template-columns:1fr;gap:2px;margin-top:36px}
-  .step{padding:28px 22px}
-  .step:first-child{border-radius:14px 14px 0 0}
-  .step:last-child{border-radius:0 0 14px 14px}
-  .step-n{font-size:48px;top:10px;right:14px}
+  /* STEPS mobile - hide desktop, show compact panel */
+  .steps-desktop{display:none!important}
+  .steps-mobile{display:block}
   
   /* SECTION DIVIDER mobile */
   .sec-divider{height:80px}
@@ -701,12 +762,40 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
   <div class="sec-inner" style="text-align:center">
     <div class="sec-label reveal" style="justify-content:center">Flujo de trabajo</div>
     <h2 class="sec-h2 reveal d1">3 pasos. <em>5 minutos.</em></h2>
-    <div class="steps-grid" style="text-align:left">
+
+    <!-- DESKTOP: full grid with icons and detailed text -->
+    <div class="steps-grid steps-desktop" style="text-align:left">
       <div class="step reveal d1"><div class="step-n">01</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 3 V15 M6 11 L12 17 L18 11 M3 19 H21" stroke="url(#stepg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="stepg" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs></svg></div><div class="step-lbl">Paso 01</div><div class="step-t">Instala</div><div class="step-d">Al comprar recibes un instalador para Mac o Windows. Haces doble clic y se instala todo automáticamente. Sin configuración.</div><div class="step-tm">~2 min</div></div>
       <div class="step reveal d2"><div class="step-n">02</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="url(#stepg)" stroke-width="2"/><path d="M12 7 V17 M7 12 H17" stroke="url(#stepg)" stroke-width="2" stroke-linecap="round"/></svg></div><div class="step-lbl">Paso 02</div><div class="step-t">Aplica</div><div class="step-d">Arrastra el nodo OFX. Selecciona tu cámara y el look que quieres.</div><div class="step-tm">~2 min</div></div>
       <div class="step reveal d3"><div class="step-n">03</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2 L14.5 9 L22 9.5 L16.5 14 L18.5 22 L12 17.5 L5.5 22 L7.5 14 L2 9.5 L9.5 9 L12 2Z" stroke="url(#stepg)" stroke-width="2" stroke-linejoin="round" fill="rgba(59,130,246,0.1)"/></svg></div><div class="step-lbl">Paso 03</div><div class="step-t">Exporta</div><div class="step-d">Ajusta la intensidad. Cuando te guste, exportas. Simple.</div><div class="step-tm">~1 min</div></div>
     </div>
-    <div class="reveal" style="margin-top:16px;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(96,165,250,.04));border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:20px 32px;display:flex;align-items:center;justify-content:space-between">
+
+    <!-- MOBILE: compact panel (plugin-UI style) -->
+    <div class="steps-mobile reveal d1">
+      <div class="sm-row">
+        <span class="sm-num">01</span>
+        <span class="sm-label">Instala</span>
+        <span class="sm-time">~2 min</span>
+      </div>
+      <div class="sm-row">
+        <span class="sm-num">02</span>
+        <span class="sm-label">Aplica</span>
+        <span class="sm-time">~2 min</span>
+      </div>
+      <div class="sm-row">
+        <span class="sm-num">03</span>
+        <span class="sm-label">Exporta</span>
+        <span class="sm-time">~1 min</span>
+      </div>
+      <div class="sm-row sm-total">
+        <span class="sm-num-blank"></span>
+        <span class="sm-label">Tiempo total</span>
+        <span class="sm-time-final">~5 min</span>
+      </div>
+    </div>
+
+    <!-- DESKTOP only: total time bar -->
+    <div class="reveal steps-desktop" style="margin-top:16px;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(96,165,250,.04));border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:20px 32px;display:flex;align-items:center;justify-content:space-between">
       <span style="font-size:15px;font-weight:500;color:var(--g1)">Tiempo total de color grading</span>
       <span style="font-size:22px;font-weight:800;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.02em">~5 minutos</span>
     </div>
@@ -739,8 +828,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
     </div>
     <div class="prod-grid" id="pg">
 
-      <!-- OneClick Grade for DaVinci -->
-      <div class="prod" data-cat="plugin"><div class="prod-thumb"><img src="images/plugin-ui.png" alt="OneClick Grade DaVinci"/><span class="badge bg">Más vendido</span></div><div class="prod-body"><div class="prod-cat">Plugin OFX + DCTL · DaVinci Resolve</div><div class="prod-name">OneClick Grade · DaVinci</div><div class="prod-desc">Versión completa para DaVinci Resolve. Incluye plugin OFX (51 LUTs) y DCTL Film Look Finisher. El flujo profesional de 3 nodos en un solo paquete.</div><div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap"><span style="font-size:10px;background:rgba(59,130,246,.1);color:var(--acc-soft);border:1px solid rgba(59,130,246,.2);padding:3px 9px;border-radius:4px;font-weight:500">Plugin OFX</span><span style="font-size:10px;background:rgba(59,130,246,.1);color:var(--acc-soft);border:1px solid rgba(59,130,246,.2);padding:3px 9px;border-radius:4px;font-weight:500">DCTL incluido</span></div></div><div class="prod-foot"><div><div class="prod-price">$49<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="https://pay.hotmart.com/A105479773D?checkoutMode=2" class="btn-buy hotmart-fb hotmart__button-checkout" onclick="return false;">Comprar →</a></div></div>
+      <!-- OneClick Grade for DaVinci (incluye versión Adobe) -->
+      <div class="prod" data-cat="plugin"><div class="prod-thumb"><img src="images/plugin-ui.png" alt="OneClick Grade DaVinci"/><span class="badge bg">Más vendido</span></div><div class="prod-body"><div class="prod-cat">Bundle Profesional · DaVinci + Adobe</div><div class="prod-name">OneClick Grade · DaVinci</div><div class="prod-desc">Versión completa para DaVinci Resolve. Incluye plugin OFX (51 LUTs), DCTL Film Look Finisher y la versión para Adobe Premiere y After Effects de regalo. El paquete profesional definitivo.</div><div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap"><span style="font-size:10px;background:rgba(59,130,246,.1);color:var(--acc-soft);border:1px solid rgba(59,130,246,.2);padding:3px 9px;border-radius:4px;font-weight:500">Plugin OFX</span><span style="font-size:10px;background:rgba(59,130,246,.1);color:var(--acc-soft);border:1px solid rgba(59,130,246,.2);padding:3px 9px;border-radius:4px;font-weight:500">DCTL incluido</span><span style="font-size:10px;background:rgba(48,209,88,.1);color:var(--green);border:1px solid rgba(48,209,88,.25);padding:3px 9px;border-radius:4px;font-weight:500">+ Adobe gratis</span></div></div><div class="prod-foot"><div><div style="display:flex;align-items:baseline;gap:6px"><span style="font-size:13px;color:var(--g3);text-decoration:line-through">$89</span><div class="prod-price">$49<small>USD</small></div></div><div style="font-size:10px;color:var(--acc-soft);font-weight:600">Precio de lanzamiento</div></div><a href="https://pay.hotmart.com/A105479773D?checkoutMode=2" class="btn-buy hotmart-fb hotmart__button-checkout" onclick="return false;">Comprar →</a></div></div>
 
       <!-- OneClick Grade for Adobe -->
       <div class="prod" data-cat="plugin"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="adb1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs><rect x="6" y="14" width="24" height="36" rx="3" stroke="url(#adb1)" stroke-width="1.5" fill="rgba(59,130,246,0.06)"/><path d="M14 22 V42 M14 22 H20 C22.5 22, 24 24, 24 27 C24 30, 22.5 32, 20 32 H14" stroke="url(#adb1)" stroke-width="1.5" stroke-linecap="round"/><rect x="34" y="14" width="24" height="36" rx="3" stroke="url(#adb1)" stroke-width="1.5" fill="rgba(59,130,246,0.06)"/><path d="M38 42 L46 22 L54 42 M40.5 36 H51.5" stroke="url(#adb1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="badge bn">Adobe</span></div><div class="prod-body"><div class="prod-cat">Plugin · Premiere Pro + After Effects</div><div class="prod-name">OneClick Grade · Adobe</div><div class="prod-desc">Plugin de conversión y look creativo para Adobe Premiere Pro y After Effects. Convierte LOG y aplica los 51 LUTs cinematográficos.</div><div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap"><span style="font-size:10px;background:rgba(59,130,246,.1);color:var(--acc-soft);border:1px solid rgba(59,130,246,.2);padding:3px 9px;border-radius:4px;font-weight:500">Premiere Pro</span><span style="font-size:10px;background:rgba(59,130,246,.1);color:var(--acc-soft);border:1px solid rgba(59,130,246,.2);padding:3px 9px;border-radius:4px;font-weight:500">After Effects</span></div></div><div class="prod-foot"><div><div class="prod-price">$37<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
@@ -790,7 +879,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
     <div class="sec-label reveal" style="justify-content:center">Precio</div>
     <h2 class="sec-h2 reveal d1" style="text-align:center">Una sola compra.<br/><em>Para siempre.</em></h2>
     <div class="price-card reveal d2">
-      <div class="price-was">Precio normal: $59 USD</div>
+      <div class="price-was">Precio normal: $89 USD</div>
       <div class="price-now"><span class="price-curr">$</span>49<span class="price-usd">USD</span></div>
       <div class="price-note">Pago único · Sin suscripciones · Sin renovaciones</div>
       <div class="price-inc">
@@ -844,8 +933,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
 <footer>
   <div class="foot-in">
     <div class="foot-logo"><span class="w">OneClick</span><span class="y">Tools</span></div>
-    <div class="foot-links"><a href="#plugin">Plugin</a><a href="#tienda">Tienda</a><a href="#faq">FAQ</a><a href="mailto:Oneclickgrade@gmail.com">Soporte</a><a href="mailto:Oneclickgrade@gmail.com">Contacto</a></div>
-    <div class="foot-copy">© 2026 OCG Tools · Hecho para creadores · <a href="mailto:Oneclickgrade@gmail.com" style="color:var(--acc-soft);text-decoration:none">Oneclickgrade@gmail.com</a></div>
+    <div class="foot-links"><a href="#plugin">Plugin</a><a href="#tienda">Tienda</a><a href="#faq">FAQ</a><a href="mailto:Oneclickgrade@gmail.com">Soporte</a></div>
+    <div class="foot-copy">© 2026 OCG Tools · Hecho para creadores</div>
   </div>
 </footer>
 
