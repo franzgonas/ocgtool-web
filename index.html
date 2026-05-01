@@ -19,10 +19,11 @@ importHotmart();
   /* Deep blue-black backgrounds matching plugin UI */
   --bg:#04060d;--bg2:#080b16;--bg3:#0e1320;--bg4:#161c2e;
   --border:rgba(120,180,255,.08);--border2:rgba(120,180,255,.16);
-  /* Primary: cyan-blue from plugin UI (lighter, more sky-blue) */
-  --acc:#5BC8FF;--acc2:#8B7FFF;--accdim:rgba(91,200,255,.10);
-  --acc-glow:rgba(91,200,255,.4);
-  --acc-soft:#A8DFFF;
+  /* Primary: premium software blue (Linear/Stripe style) */
+  --acc:#3B82F6;--acc2:#60A5FA;--accdim:rgba(59,130,246,.10);
+  --acc-glow:rgba(59,130,246,.45);
+  --acc-soft:#93C5FD;
+  --acc-deep:#2563EB;
   /* Secondary: gold (premium combo only) */
   --gold:#F5A623;--gold2:#FFD173;--golddim:rgba(245,166,35,.12);
   --white:#fff;--g1:#e8e8ed;--g2:#a0a8b8;--g3:#5e6678;
@@ -39,30 +40,30 @@ body{background:var(--bg);color:var(--g1);font-family:var(--font);font-size:17px
 .compat-pill{
   display:inline-flex;align-items:center;gap:7px;
   padding:8px 14px;border-radius:24px;
-  background:rgba(91,200,255,.06);
-  border:1px solid rgba(91,200,255,.18);
+  background:rgba(59,130,246,.06);
+  border:1px solid rgba(59,130,246,.18);
   color:var(--acc-soft);
   font-size:12px;font-weight:500;
   backdrop-filter:blur(10px);
   transition:all .25s var(--ease);
 }
-.compat-pill:hover{background:rgba(91,200,255,.1);border-color:rgba(91,200,255,.3);transform:translateY(-1px)}
+.compat-pill:hover{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3);transform:translateY(-1px)}
 
 /* ── LIQUID GLASS UTILITY ── */
 .glass{
   background:rgba(14,19,32,.6);
   backdrop-filter:blur(20px) saturate(140%);
   -webkit-backdrop-filter:blur(20px) saturate(140%);
-  border:1px solid rgba(91,200,255,.12);
+  border:1px solid rgba(59,130,246,.12);
   position:relative;overflow:hidden;
 }
 .glass::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(91,200,255,.3) 50%,transparent);
+  background:linear-gradient(90deg,transparent,rgba(59,130,246,.3) 50%,transparent);
 }
 .glass::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse at top right,rgba(91,200,255,.06) 0%,transparent 60%);
+  background:radial-gradient(ellipse at top right,rgba(59,130,246,.06) 0%,transparent 60%);
   pointer-events:none;
 }
 
@@ -76,7 +77,7 @@ body{background:var(--bg);color:var(--g1);font-family:var(--font);font-size:17px
   content:'';position:absolute;top:50%;left:50%;
   transform:translate(-50%,-50%);
   width:200%;height:200%;
-  background:radial-gradient(ellipse 50% 30% at center,rgba(91,200,255,.08) 0%,transparent 60%);
+  background:radial-gradient(ellipse 50% 30% at center,rgba(59,130,246,.08) 0%,transparent 60%);
   pointer-events:none;
 }
 .sec-divider-line{
@@ -95,10 +96,10 @@ body{background:var(--bg);color:var(--g1);font-family:var(--font);font-size:17px
 /* ── SECTION TITLE BIG (for store) ── */
 .store-section{
   background:
-    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(91,200,255,.06) 0%,transparent 60%),
+    radial-gradient(ellipse 80% 50% at 50% 0%,rgba(59,130,246,.06) 0%,transparent 60%),
     linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%);
   position:relative;
-  border-top:1px solid rgba(91,200,255,.08);
+  border-top:1px solid rgba(59,130,246,.08);
 }
 .store-hero{
   text-align:center;margin-bottom:48px;
@@ -116,16 +117,16 @@ body{background:var(--bg);color:var(--g1);font-family:var(--font);font-size:17px
   font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
   color:var(--acc);margin-bottom:18px;
   padding:7px 18px;border-radius:24px;
-  background:rgba(91,200,255,.06);
-  border:1px solid rgba(91,200,255,.2);
+  background:rgba(59,130,246,.06);
+  border:1px solid rgba(59,130,246,.2);
 }
 .store-eyebrow svg{width:12px;height:12px}
 
 
 .icon-box{
   width:44px;height:44px;border-radius:11px;
-  background:linear-gradient(135deg,rgba(91,200,255,.12),rgba(139,127,255,.06));
-  border:1px solid rgba(91,200,255,.2);
+  background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(96,165,250,.06));
+  border:1px solid rgba(59,130,246,.2);
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;color:var(--acc);
   transition:all .3s var(--ease);
@@ -135,7 +136,7 @@ body{background:var(--bg);color:var(--g1);font-family:var(--font);font-size:17px
   border-color:rgba(245,166,35,.25);color:var(--gold);
 }
 .icon-box svg{width:20px;height:20px}
-.feat:hover .icon-box{transform:scale(1.05);box-shadow:0 8px 24px rgba(91,200,255,.15)}
+.feat:hover .icon-box{transform:scale(1.05);box-shadow:0 8px 24px rgba(59,130,246,.15)}
 
 /* ── PRODUCT CARD ICON SYSTEM ── */
 .prod-icon-bg{
@@ -145,18 +146,18 @@ body{background:var(--bg);color:var(--g1);font-family:var(--font);font-size:17px
 }
 .prod-icon-bg::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at center,rgba(91,200,255,.08) 0%,transparent 60%);
+  background:radial-gradient(circle at center,rgba(59,130,246,.08) 0%,transparent 60%);
 }
-.prod-icon-bg.purple::before{background:radial-gradient(circle at center,rgba(139,127,255,.10) 0%,transparent 60%)}
+.prod-icon-bg.purple::before{background:radial-gradient(circle at center,rgba(96,165,250,.10) 0%,transparent 60%)}
 .prod-icon-bg.gold::before{background:radial-gradient(circle at center,rgba(245,166,35,.08) 0%,transparent 60%)}
 .prod-icon-bg.green::before{background:radial-gradient(circle at center,rgba(48,209,88,.08) 0%,transparent 60%)}
 .prod-icon-bg.pink::before{background:radial-gradient(circle at center,rgba(255,80,150,.08) 0%,transparent 60%)}
 .prod-icon-svg{
   width:64px;height:64px;
   position:relative;z-index:2;
-  filter:drop-shadow(0 4px 20px rgba(91,200,255,.3));
+  filter:drop-shadow(0 4px 20px rgba(59,130,246,.3));
 }
-.prod-icon-svg.purple{filter:drop-shadow(0 4px 20px rgba(139,127,255,.3))}
+.prod-icon-svg.purple{filter:drop-shadow(0 4px 20px rgba(96,165,250,.3))}
 .prod-icon-svg.gold{filter:drop-shadow(0 4px 20px rgba(245,166,35,.3))}
 .prod-icon-svg.green{filter:drop-shadow(0 4px 20px rgba(48,209,88,.3))}
 .prod-icon-svg.pink{filter:drop-shadow(0 4px 20px rgba(255,80,150,.3))}
@@ -174,12 +175,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:54px;display:flex;ali
 .nav-links{display:flex;align-items:center;gap:6px}
 .nav-links a{font-size:13px;color:var(--g2);text-decoration:none;padding:7px 14px;border-radius:7px;transition:color .2s,background .2s}
 .nav-links a:hover{color:#fff;background:rgba(255,255,255,.07)}
-.nav-buy{background:linear-gradient(135deg,var(--acc),var(--acc2))!important;color:#fff!important;font-weight:700!important;border-radius:8px!important;box-shadow:0 0 0 1px rgba(91,200,255,.3)!important}
-.nav-buy:hover{box-shadow:0 4px 24px rgba(91,200,255,.4),0 0 0 1px rgba(91,200,255,.5)!important;transform:translateY(-1px)!important}
+.nav-buy{background:linear-gradient(135deg,var(--acc),var(--acc2))!important;color:#fff!important;font-weight:700!important;border-radius:8px!important;box-shadow:0 0 0 1px rgba(59,130,246,.3)!important}
+.nav-buy:hover{box-shadow:0 4px 24px rgba(59,130,246,.4),0 0 0 1px rgba(59,130,246,.5)!important;transform:translateY(-1px)!important}
 
 /* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 50% at 50% -5%,rgba(91,200,255,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 90% 90%,rgba(139,127,255,.06) 0%,transparent 60%),var(--bg)}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);background:rgba(91,200,255,.06);border:1px solid rgba(91,200,255,.2);padding:7px 18px;border-radius:20px;margin-bottom:28px}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 50% at 50% -5%,rgba(59,130,246,.08) 0%,transparent 60%),radial-gradient(ellipse 60% 40% at 90% 90%,rgba(96,165,250,.06) 0%,transparent 60%),var(--bg)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);background:rgba(59,130,246,.06);border:1px solid rgba(59,130,246,.2);padding:7px 18px;border-radius:20px;margin-bottom:28px}
 .live{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px var(--green);animation:blink 2s ease-in-out infinite;flex-shrink:0}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
 .hero h1{font-size:clamp(52px,9vw,104px);font-weight:800;line-height:.96;letter-spacing:-.045em;color:#fff;max-width:920px}
@@ -187,17 +188,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:54px;display:flex;ali
 @keyframes shine{0%{background-position:0%}100%{background-position:200%}}
 .hero-sub{font-size:19px;color:var(--g2);margin:24px auto 0;max-width:560px;line-height:1.65}
 .hero-ctas{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:44px;flex-wrap:wrap}
-.btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:16px;font-weight:700;padding:16px 38px;border-radius:12px;text-decoration:none;border:none;cursor:pointer;font-family:var(--font);transition:all .25s var(--ease);box-shadow:0 0 0 1px rgba(91,200,255,.3),0 4px 24px rgba(91,200,255,.15);position:relative;overflow:hidden}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:16px;font-weight:700;padding:16px 38px;border-radius:12px;text-decoration:none;border:none;cursor:pointer;font-family:var(--font);transition:all .25s var(--ease);box-shadow:0 0 0 1px rgba(59,130,246,.3),0 4px 24px rgba(59,130,246,.15);position:relative;overflow:hidden}
 .btn-gold::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,transparent 0%,rgba(255,255,255,.15) 50%,transparent 100%);transform:translateX(-100%);transition:transform .6s var(--ease)}
 .btn-gold:hover::before{transform:translateX(100%)}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(91,200,255,.5),0 12px 40px rgba(91,200,255,.35)}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(59,130,246,.5),0 12px 40px rgba(59,130,246,.35)}
 .btn-out{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.07);color:#fff;font-size:15px;font-weight:500;padding:15px 28px;border-radius:12px;text-decoration:none;border:1px solid var(--border2);transition:all .2s;cursor:pointer;font-family:var(--font)}
 .btn-out:hover{background:rgba(255,255,255,.12)}
 .hero-checks{display:flex;align-items:center;justify-content:center;gap:24px;margin-top:40px;flex-wrap:wrap}
 .chk{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--g3)}
 .hero-img{margin-top:72px;width:100%;max-width:960px;animation:float 6s ease-in-out infinite;position:relative}
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.hero-img img{width:100%;border-radius:20px;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 80px rgba(91,200,255,.1)}
+.hero-img img{width:100%;border-radius:20px;box-shadow:0 40px 120px rgba(0,0,0,.8),0 0 80px rgba(59,130,246,.1)}
 
 /* TICKER */
 .ticker{overflow:hidden;padding:15px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg2)}
@@ -218,22 +219,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:54px;display:flex;ali
 .ba-tabs{display:flex;gap:6px;margin-bottom:32px;flex-wrap:wrap}
 .ba-tab{padding:8px 20px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--g2);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font)}
 .ba-tab:hover{border-color:var(--border2);color:#fff}
-.ba-tab.active{background:var(--accdim);border-color:rgba(91,200,255,.35);color:var(--acc)}
+.ba-tab.active{background:var(--accdim);border-color:rgba(59,130,246,.35);color:var(--acc)}
 .slider-wrap{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;user-select:none;touch-action:none;background:var(--bg3);border:1px solid var(--border)}
 .s-img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
 .s-after{clip-path:inset(0 50% 0 0)}
 .s-div{position:absolute;top:0;bottom:0;left:50%;width:2px;background:linear-gradient(180deg,transparent,var(--acc) 20%,var(--acc) 80%,transparent);transform:translateX(-50%);cursor:ew-resize;z-index:10}
-.s-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 0 0 4px rgba(255,255,255,.05),0 0 32px rgba(91,200,255,.6),0 4px 12px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;cursor:ew-resize;color:#fff;transition:transform .2s}
+.s-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--acc),var(--acc2));box-shadow:0 0 0 4px rgba(255,255,255,.05),0 0 32px rgba(59,130,246,.6),0 4px 12px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;cursor:ew-resize;color:#fff;transition:transform .2s}
 .s-handle:hover{transform:translate(-50%,-50%) scale(1.1)}
 .s-lbl{position:absolute;top:16px;z-index:5;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:6px;backdrop-filter:blur(12px);pointer-events:none}
 .s-lbl.b{left:16px;background:rgba(0,0,0,.65);color:var(--g1);border:1px solid rgba(255,255,255,.15)}
-.s-lbl.a{right:16px;background:rgba(91,200,255,.15);color:var(--acc);border:1px solid rgba(91,200,255,.35)}
+.s-lbl.a{right:16px;background:rgba(59,130,246,.15);color:var(--acc);border:1px solid rgba(59,130,246,.35)}
 
 /* Mobile labels (hidden on desktop) */
 .ba-mobile-labels{display:none;gap:10px;margin-bottom:14px}
 .ba-mlbl{flex:1;text-align:center;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 10px;border-radius:8px}
 .ba-mlbl.before{background:rgba(255,255,255,.04);color:var(--g2);border:1px solid rgba(255,255,255,.1)}
-.ba-mlbl.after{background:rgba(91,200,255,.12);color:var(--acc);border:1px solid rgba(91,200,255,.3)}
+.ba-mlbl.after{background:rgba(59,130,246,.12);color:var(--acc);border:1px solid rgba(59,130,246,.3)}
 .s-loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg3);z-index:20;transition:opacity .3s}
 .spinner{width:32px;height:32px;border:2px solid var(--border);border-top-color:var(--acc);border-radius:50%;animation:spin .7s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
@@ -257,24 +258,24 @@ code{color:var(--gold);background:rgba(245,166,35,.08);padding:1px 6px;border-ra
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:56px}
 .step{padding:40px 32px;background:var(--bg3);border:1px solid var(--border);position:relative;transition:border-color .25s,background .25s}
 .step:first-child{border-radius:16px 0 0 16px}.step:last-child{border-radius:0 16px 16px 0}
-.step:hover{border-color:rgba(91,200,255,.3);background:var(--bg4)}
-.step-n{font-size:60px;font-weight:800;color:rgba(91,200,255,.07);position:absolute;top:14px;right:18px;line-height:1}
-.step-ico{margin-bottom:20px;display:inline-flex;width:48px;height:48px;border-radius:12px;background:rgba(91,200,255,.08);border:1px solid rgba(91,200,255,.15);align-items:center;justify-content:center}
+.step:hover{border-color:rgba(59,130,246,.3);background:var(--bg4)}
+.step-n{font-size:60px;font-weight:800;color:rgba(59,130,246,.07);position:absolute;top:14px;right:18px;line-height:1}
+.step-ico{margin-bottom:20px;display:inline-flex;width:48px;height:48px;border-radius:12px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15);align-items:center;justify-content:center}
 .step-lbl{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--acc);margin-bottom:8px}
 .step-t{font-size:20px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.02em}
 .step-d{font-size:14px;color:var(--g2);line-height:1.7}
-.step-tm{display:inline-flex;margin-top:14px;font-size:11px;font-weight:600;color:var(--acc);background:var(--accdim);border:1px solid rgba(91,200,255,.2);padding:3px 10px;border-radius:10px}
+.step-tm{display:inline-flex;margin-top:14px;font-size:11px;font-weight:600;color:var(--acc);background:var(--accdim);border:1px solid rgba(59,130,246,.2);padding:3px 10px;border-radius:10px}
 
 /* STORE */
 .store-hdr{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--border)}
 .stabs{display:flex;gap:6px;margin-bottom:32px;flex-wrap:wrap}
 .stab{padding:8px 18px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--g2);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;font-family:var(--font)}
 .stab:hover{border-color:var(--border2);color:#fff}
-.stab.active{background:var(--accdim);border-color:rgba(91,200,255,.35);color:var(--acc)}
+.stab.active{background:var(--accdim);border-color:rgba(59,130,246,.35);color:var(--acc)}
 .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .prod{background:var(--bg3);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative}
-.prod::before{content:'';position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,transparent,rgba(91,200,255,.05) 50%,transparent);opacity:0;transition:opacity .3s;pointer-events:none}
-.prod:hover{border-color:rgba(91,200,255,.3);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(91,200,255,.08)}
+.prod::before{content:'';position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,transparent,rgba(59,130,246,.05) 50%,transparent);opacity:0;transition:opacity .3s;pointer-events:none}
+.prod:hover{border-color:rgba(59,130,246,.3);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 40px rgba(59,130,246,.08)}
 .prod:hover::before{opacity:1}
 .prod-thumb{aspect-ratio:16/9;overflow:hidden;position:relative;background:var(--bg4);display:flex;align-items:center;justify-content:center}
 .prod-thumb img{width:100%;height:100%;object-fit:cover}
@@ -291,13 +292,13 @@ code{color:var(--gold);background:rgba(245,166,35,.08);padding:1px 6px;border-ra
 .prod-price{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.02em}
 .prod-price.free{color:var(--green);font-size:16px}
 .prod-price small{font-size:11px;color:var(--g3);font-weight:400;margin-left:2px}
-.btn-buy{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:12px;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;transition:all .2s;white-space:nowrap;border:none;cursor:pointer;font-family:var(--font);box-shadow:0 2px 12px rgba(91,200,255,.2)}
-.btn-buy:hover{box-shadow:0 4px 20px rgba(91,200,255,.4);transform:scale(1.04)}
+.btn-buy{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:12px;font-weight:700;padding:9px 18px;border-radius:8px;text-decoration:none;transition:all .2s;white-space:nowrap;border:none;cursor:pointer;font-family:var(--font);box-shadow:0 2px 12px rgba(59,130,246,.2)}
+.btn-buy:hover{box-shadow:0 4px 20px rgba(59,130,246,.4);transform:scale(1.04)}
 .btn-free{background:rgba(48,209,88,.1);color:var(--green);border:1px solid rgba(48,209,88,.25)}
 .btn-free:hover{background:rgba(48,209,88,.2)}
 
 /* PRICING */
-.price-card{max-width:600px;margin:56px auto 0;background:var(--bg3);border:1px solid rgba(91,200,255,.3);border-radius:20px;padding:52px;position:relative;overflow:hidden;text-align:center}
+.price-card{max-width:600px;margin:56px auto 0;background:var(--bg3);border:1px solid rgba(59,130,246,.3);border-radius:20px;padding:52px;position:relative;overflow:hidden;text-align:center}
 .price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--acc) 50%,transparent)}
 .price-was{font-size:15px;color:var(--g3);text-decoration:line-through;margin-bottom:4px}
 .price-now{font-size:88px;font-weight:800;color:#fff;letter-spacing:-.04em;line-height:1;display:flex;align-items:flex-start;justify-content:center;gap:2px}
@@ -314,12 +315,12 @@ code{color:var(--gold);background:rgba(245,166,35,.08);padding:1px 6px;border-ra
 .faq-q{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;text-align:left;font-size:16px;font-weight:500;color:var(--g1);font-family:var(--font);transition:color .2s}
 .faq-q:hover{color:#fff}.faq-q.open{color:var(--acc)}
 .faq-ico{width:24px;height:24px;border-radius:6px;border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--g2);transition:transform .3s,border-color .3s}
-.faq-q.open .faq-ico{transform:rotate(45deg);border-color:rgba(91,200,255,.4);color:var(--acc)}
+.faq-q.open .faq-ico{transform:rotate(45deg);border-color:rgba(59,130,246,.4);color:var(--acc)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease);font-size:15px;color:var(--g2);line-height:1.75}
 .faq-a.open{max-height:300px;padding-bottom:22px}
 
 /* FINAL CTA */
-.final-cta{padding:140px 40px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(91,200,255,.08) 0%,transparent 70%),var(--bg);border-top:1px solid var(--border)}
+.final-cta{padding:140px 40px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 70% 60% at 50% 100%,rgba(59,130,246,.08) 0%,transparent 70%),var(--bg);border-top:1px solid var(--border)}
 .final-cta h2{font-size:clamp(42px,7.5vw,96px);font-weight:800;letter-spacing:-.045em;color:#fff;line-height:.96;margin-bottom:20px}
 .gg{background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
@@ -340,13 +341,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
   background:rgba(8,11,22,.85);
   backdrop-filter:blur(24px) saturate(180%);
   -webkit-backdrop-filter:blur(24px) saturate(180%);
-  border-top:1px solid rgba(91,200,255,.12);
+  border-top:1px solid rgba(59,130,246,.12);
   padding:8px 4px calc(8px + env(safe-area-inset-bottom));
   align-items:center;justify-content:space-around;
 }
 .mnav::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(91,200,255,.4) 50%,transparent);
+  background:linear-gradient(90deg,transparent,rgba(59,130,246,.4) 50%,transparent);
 }
 .mnav-item{
   flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;
@@ -364,7 +365,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
   background:linear-gradient(135deg,var(--acc),var(--acc2));
   color:#fff!important;
   margin:0 4px;padding:10px 4px;
-  box-shadow:0 4px 16px rgba(91,200,255,.3);
+  box-shadow:0 4px 16px rgba(59,130,246,.3);
 }
 .mnav-buy:hover{color:#fff!important}
 
@@ -383,14 +384,14 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
   backdrop-filter:blur(24px) saturate(180%);
   -webkit-backdrop-filter:blur(24px) saturate(180%);
   border-top-left-radius:24px;border-top-right-radius:24px;
-  border-top:1px solid rgba(91,200,255,.15);
+  border-top:1px solid rgba(59,130,246,.15);
   padding:12px 18px calc(28px + env(safe-area-inset-bottom));
   transform:translateY(100%);transition:transform .35s var(--ease);
   position:relative;
 }
 .mnav-panel::before{
   content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(91,200,255,.4) 50%,transparent);
+  background:linear-gradient(90deg,transparent,rgba(59,130,246,.4) 50%,transparent);
 }
 .mnav-overlay.show .mnav-panel{transform:translateY(0)}
 .mnav-handle{
@@ -407,19 +408,19 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
 .mnav-cat{
   display:flex;align-items:center;gap:14px;
   padding:14px;border-radius:14px;
-  background:rgba(91,200,255,.04);
-  border:1px solid rgba(91,200,255,.08);
+  background:rgba(59,130,246,.04);
+  border:1px solid rgba(59,130,246,.08);
   text-decoration:none;color:var(--g1);
   transition:all .2s var(--ease);
   -webkit-tap-highlight-color:transparent;
 }
 .mnav-cat:active{transform:scale(0.98)}
-.mnav-cat:hover{background:rgba(91,200,255,.08);border-color:rgba(91,200,255,.18)}
+.mnav-cat:hover{background:rgba(59,130,246,.08);border-color:rgba(59,130,246,.18)}
 .mnav-cat-ico{
   width:42px;height:42px;border-radius:11px;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;color:var(--acc);
-  border:1px solid rgba(91,200,255,.15);
+  border:1px solid rgba(59,130,246,.15);
 }
 .mnav-cat-t{font-size:14px;font-weight:600;color:#fff;margin-bottom:2px}
 .mnav-cat-d{font-size:12px;color:var(--g2)}
@@ -433,7 +434,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
 /* MOBILE-FIRST OPTIMIZATION       */
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 @media(max-width:900px){
-  body{font-size:16px;padding-bottom:72px}
+  body{font-size:16px;padding-bottom:72px;overflow-x:hidden}
+  *{max-width:100%}
   
   /* NAV mobile - clean header */
   nav{padding:0 16px;height:50px}
@@ -448,18 +450,19 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
   /* HERO mobile - centered alignment */
   .hero{padding:80px 18px 56px;min-height:auto;text-align:center}
   .hero-badge{font-size:9.5px;padding:6px 14px;margin-bottom:18px;letter-spacing:.08em}
-  .hero h1{font-size:40px;line-height:1.05;text-align:center;width:100%}
+  .hero h1{font-size:38px;line-height:1.05;text-align:center;width:100%;word-wrap:break-word}
   .hero-sub{font-size:15px;margin:18px auto 0;padding:0 4px;text-align:center;max-width:100%}
-  .hero-ctas{margin-top:32px;gap:10px;width:100%;flex-direction:column}
-  .btn-gold{padding:14px 22px;font-size:14px;width:100%;justify-content:center}
-  .btn-out{padding:13px 22px;font-size:14px;width:100%;justify-content:center}
-  .hero-checks{margin-top:28px;gap:12px;justify-content:center}
-  .chk{font-size:11px}
+  .hero-ctas{margin-top:32px;gap:10px;width:100%;flex-direction:column;align-items:stretch}
+  .btn-gold{padding:14px 22px;font-size:14px;width:100%;justify-content:center;box-sizing:border-box}
+  .btn-out{padding:13px 22px;font-size:14px;width:100%;justify-content:center;box-sizing:border-box}
+  .hero-checks{margin-top:28px;gap:10px;justify-content:center;flex-wrap:wrap}
+  .chk{font-size:11px;flex-shrink:0}
   .hero-img{margin-top:48px}
   
   /* SECTIONS mobile */
   .sec{padding:64px 18px}
-  .sec-h2{font-size:30px;line-height:1.08}
+  .sec-inner{max-width:100%;overflow:hidden}
+  .sec-h2{font-size:30px;line-height:1.08;text-align:left}
   .sec-label{font-size:9.5px;letter-spacing:.1em}
   
   /* COMPAT pills mobile */
@@ -469,7 +472,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
   /* BEFORE/AFTER mobile - labels OUTSIDE the image */
   .ba-mobile-labels{display:flex}
   .s-lbl{display:none}
-  .ba-tabs{gap:6px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px;margin:-4px -18px 24px;padding:0 18px 8px}
+  .ba-tabs{gap:6px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -18px 24px;padding:0 18px 8px;max-width:none}
   .ba-tabs::-webkit-scrollbar{display:none}
   .ba-tab{padding:7px 16px;font-size:12px;flex-shrink:0;white-space:nowrap}
   .s-handle{width:42px;height:42px}
@@ -494,54 +497,59 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
   /* STORE mobile */
   .store-hero{margin-bottom:32px;padding-bottom:24px}
   .store-eyebrow{font-size:10px;padding:6px 14px}
-  .stabs{gap:6px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -18px 24px;padding:0 18px 8px}
+  .stabs{gap:6px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -18px 24px;padding:0 18px 8px;max-width:none}
   .stabs::-webkit-scrollbar{display:none}
   .stab{padding:7px 16px;font-size:12px;flex-shrink:0;white-space:nowrap}
-  .prod-grid{grid-template-columns:1fr;gap:14px}
-  .prod{border-radius:16px}
+  .prod-grid{grid-template-columns:1fr;gap:14px;max-width:100%}
+  .prod{border-radius:16px;max-width:100%;overflow:hidden}
   .prod-thumb{aspect-ratio:16/10}
   .prod-icon-svg{width:54px;height:54px}
   .prod-body{padding:16px}
-  .prod-name{font-size:17px}
+  .prod-name{font-size:17px;word-wrap:break-word}
   .prod-desc{font-size:13px;line-height:1.55}
   .prod-foot{padding:14px 16px;flex-wrap:wrap;gap:10px}
   .prod-price{font-size:22px}
-  .btn-buy{padding:10px 18px;font-size:12px}
+  .btn-buy{padding:10px 18px;font-size:12px;flex-shrink:0}
   
   /* PRICING mobile */
-  .price-card{padding:36px 20px;margin-top:36px;border-radius:16px}
+  .price-card{padding:36px 20px;margin-top:36px;border-radius:16px;max-width:100%}
   .price-now{font-size:64px}
   .price-curr{font-size:24px}
   .price-inc{grid-template-columns:1fr;gap:8px;margin-bottom:28px}
   .inc{font-size:13px}
   .guarantee{font-size:12px;line-height:1.5;text-align:left}
+  .price-card .btn-gold{font-size:14px!important;padding:14px 22px!important}
   
   /* FAQ mobile */
-  .faq-q{font-size:14px;padding:18px 0;gap:14px}
+  .faq-q{font-size:14px;padding:18px 0;gap:14px;text-align:left}
   .faq-a{font-size:14px}
   
   /* FINAL CTA mobile */
   .final-cta{padding:80px 18px}
-  .final-cta h2{font-size:42px}
+  .final-cta h2{font-size:40px;line-height:1.05;word-wrap:break-word}
+  .final-cta p{padding:0 4px}
   
   /* FOOTER mobile */
   footer{padding:36px 18px 24px}
   .foot-in{flex-direction:column;align-items:center;gap:18px;text-align:center}
   .foot-links{gap:18px;justify-content:center}
   .foot-links a{font-size:12px}
+  .foot-copy{text-align:center;font-size:11px;line-height:1.6}
   
   /* TICKER mobile */
   .ti{font-size:10.5px;padding:0 18px;gap:18px}
   
   /* MODAL mobile */
-  #dl-modal > div{padding:32px 20px;margin-bottom:80px}
+  #dl-modal > div{padding:32px 20px;margin-bottom:80px;max-width:calc(100% - 32px)}
 }
 @media(max-width:380px){
-  .hero h1{font-size:34px}
-  .sec-h2{font-size:26px}
-  .final-cta h2{font-size:34px}
+  .hero h1{font-size:32px}
+  .sec-h2{font-size:24px}
+  .final-cta h2{font-size:32px}
   .price-now{font-size:54px}
   .mnav-item{font-size:9px}
+  .mnav-buy{padding:9px 4px}
+  .hero-checks .chk{font-size:10.5px}
 }
 </style>
 </head>
@@ -659,7 +667,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
           </div>
         </div>
         <div style="margin-top:36px" class="reveal d3">
-          <div class="feat"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 L4 13 H11 L9 22 L20 11 H13 L13 2Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="rgba(91,200,255,0.1)"/></svg></div><div><div class="feat-t">Conversión LOG automática</div><div class="feat-d">Sony, Canon, DJI, Blackmagic y más. Selecciona tu cámara y el plugin aplica la conversión correcta.</div></div></div>
+          <div class="feat"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 L4 13 H11 L9 22 L20 11 H13 L13 2Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="rgba(59,130,246,0.1)"/></svg></div><div><div class="feat-t">Conversión LOG automática</div><div class="feat-d">Sony, Canon, DJI, Blackmagic y más. Selecciona tu cámara y el plugin aplica la conversión correcta.</div></div></div>
           <div class="feat"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/><circle cx="15" cy="9" r="1.5" fill="currentColor" opacity="0.6"/><circle cx="15" cy="15" r="1.5" fill="currentColor" opacity="0.4"/><circle cx="9" cy="15" r="1.5" fill="currentColor" opacity="0.7"/></svg></div><div><div class="feat-t">51 looks cinematográficos</div><div class="feat-d">Desde Teal & Orange hasta Film Noir. Todos calibrados, sin archivos externos.</div></div></div>
           <div class="feat"><div class="icon-box"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7 H20 M4 12 H20 M4 17 H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="9" cy="7" r="2" fill="var(--bg3)" stroke="currentColor" stroke-width="1.6"/><circle cx="15" cy="12" r="2" fill="var(--bg3)" stroke="currentColor" stroke-width="1.6"/><circle cx="7" cy="17" r="2" fill="var(--bg3)" stroke="currentColor" stroke-width="1.6"/></svg></div><div><div class="feat-t">Control de intensidad</div><div class="feat-d">Un slider para mezclar el look con el original. Sutil o impactante, tú decides.</div></div></div>
         </div>
@@ -680,18 +688,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
           <div class="chk" style="font-size:14px"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5l3.5 3.5L11.5 2" stroke="#30d158" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Densidad de color estilo Hollywood</div>
           <div class="chk" style="font-size:14px"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5l3.5 3.5L11.5 2" stroke="#30d158" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Lavar negros y look mate en altas luces</div>
           <div class="chk" style="font-size:14px"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5l3.5 3.5L11.5 2" stroke="#30d158" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Split toning — tonalidad cálida o fría en sombras y luces</div>
-          <div class="chk" style="font-size:14px"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5l3.5 3.5L11.5 2" stroke="#30d158" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Instalación simple: copia el archivo a la carpeta DCTL de DaVinci</div>
-        </div>
-        <!-- Combo price callout -->
-        <div style="margin-top:28px;background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.25);border-radius:10px;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px" class="reveal d3">
-          <div>
-            <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Combo recomendado</div>
-            <div style="font-size:14px;color:var(--g1);font-weight:500">OneClick Grade + Film Look Finisher</div>
-            <div style="font-size:13px;color:var(--g2);margin-top:2px">Los 3 nodos completos. El flujo profesional.</div>
-          </div>
-          <a href="https://pay.hotmart.com/A105479773D?checkoutMode=2" class="btn-gold hotmart-fb hotmart__button-checkout" style="font-size:13px;padding:12px 22px;white-space:nowrap;flex-shrink:0" onclick="return false;">
-            Combo — $49
-          </a>
+          <div class="chk" style="font-size:14px"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1.5 6.5l3.5 3.5L11.5 2" stroke="#30d158" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Incluido en OneClick Grade · No se vende por separado</div>
         </div>
       </div>
       <div class="reveal d2"><img src="images/dctl-ui.png" alt="Film Look Finisher"/></div>
@@ -705,11 +702,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
     <div class="sec-label reveal" style="justify-content:center">Flujo de trabajo</div>
     <h2 class="sec-h2 reveal d1">3 pasos. <em>5 minutos.</em></h2>
     <div class="steps-grid" style="text-align:left">
-      <div class="step reveal d1"><div class="step-n">01</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 3 V15 M6 11 L12 17 L18 11 M3 19 H21" stroke="url(#stepg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="stepg" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#5BC8FF"/><stop offset="100%" stop-color="#8B7FFF"/></linearGradient></defs></svg></div><div class="step-lbl">Paso 01</div><div class="step-t">Instala</div><div class="step-d">Al comprar recibes un instalador para Mac o Windows. Haces doble clic y se instala todo automáticamente. Sin configuración.</div><div class="step-tm">~2 min</div></div>
+      <div class="step reveal d1"><div class="step-n">01</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 3 V15 M6 11 L12 17 L18 11 M3 19 H21" stroke="url(#stepg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="stepg" x1="0" y1="0" x2="24" y2="24"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs></svg></div><div class="step-lbl">Paso 01</div><div class="step-t">Instala</div><div class="step-d">Al comprar recibes un instalador para Mac o Windows. Haces doble clic y se instala todo automáticamente. Sin configuración.</div><div class="step-tm">~2 min</div></div>
       <div class="step reveal d2"><div class="step-n">02</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="url(#stepg)" stroke-width="2"/><path d="M12 7 V17 M7 12 H17" stroke="url(#stepg)" stroke-width="2" stroke-linecap="round"/></svg></div><div class="step-lbl">Paso 02</div><div class="step-t">Aplica</div><div class="step-d">Arrastra el nodo OFX. Selecciona tu cámara y el look que quieres.</div><div class="step-tm">~2 min</div></div>
-      <div class="step reveal d3"><div class="step-n">03</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2 L14.5 9 L22 9.5 L16.5 14 L18.5 22 L12 17.5 L5.5 22 L7.5 14 L2 9.5 L9.5 9 L12 2Z" stroke="url(#stepg)" stroke-width="2" stroke-linejoin="round" fill="rgba(91,200,255,0.1)"/></svg></div><div class="step-lbl">Paso 03</div><div class="step-t">Exporta</div><div class="step-d">Ajusta la intensidad. Cuando te guste, exportas. Simple.</div><div class="step-tm">~1 min</div></div>
+      <div class="step reveal d3"><div class="step-n">03</div><div class="step-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 2 L14.5 9 L22 9.5 L16.5 14 L18.5 22 L12 17.5 L5.5 22 L7.5 14 L2 9.5 L9.5 9 L12 2Z" stroke="url(#stepg)" stroke-width="2" stroke-linejoin="round" fill="rgba(59,130,246,0.1)"/></svg></div><div class="step-lbl">Paso 03</div><div class="step-t">Exporta</div><div class="step-d">Ajusta la intensidad. Cuando te guste, exportas. Simple.</div><div class="step-tm">~1 min</div></div>
     </div>
-    <div class="reveal" style="margin-top:16px;background:linear-gradient(135deg,rgba(91,200,255,.08),rgba(139,127,255,.04));border:1px solid rgba(91,200,255,.2);border-radius:12px;padding:20px 32px;display:flex;align-items:center;justify-content:space-between">
+    <div class="reveal" style="margin-top:16px;background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(96,165,250,.04));border:1px solid rgba(59,130,246,.2);border-radius:12px;padding:20px 32px;display:flex;align-items:center;justify-content:space-between">
       <span style="font-size:15px;font-weight:500;color:var(--g1)">Tiempo total de color grading</span>
       <span style="font-size:22px;font-weight:800;background:linear-gradient(135deg,var(--acc),var(--acc2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.02em">~5 minutos</span>
     </div>
@@ -742,32 +739,32 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
     </div>
     <div class="prod-grid" id="pg">
 
-      <!-- OneClick Grade -->
-      <div class="prod" data-cat="plugin"><div class="prod-thumb"><img src="images/plugin-ui.png" alt="OneClick Grade"/><span class="badge bg">Más vendido</span></div><div class="prod-body"><div class="prod-cat">Plugin OFX · DaVinci Resolve</div><div class="prod-name">OneClick Grade</div><div class="prod-desc">51 LUTs cinematográficos integrados. Convierte LOG a color cinematográfico y aplica look creativo en un solo nodo.</div></div><div class="prod-foot"><div><div class="prod-price">$49<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="https://pay.hotmart.com/A105479773D?checkoutMode=2" class="btn-buy hotmart-fb hotmart__button-checkout" onclick="return false;">Comprar →</a></div></div>
+      <!-- OneClick Grade for DaVinci -->
+      <div class="prod" data-cat="plugin"><div class="prod-thumb"><img src="images/plugin-ui.png" alt="OneClick Grade DaVinci"/><span class="badge bg">Más vendido</span></div><div class="prod-body"><div class="prod-cat">Plugin OFX + DCTL · DaVinci Resolve</div><div class="prod-name">OneClick Grade · DaVinci</div><div class="prod-desc">Versión completa para DaVinci Resolve. Incluye plugin OFX (51 LUTs) y DCTL Film Look Finisher. El flujo profesional de 3 nodos en un solo paquete.</div><div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap"><span style="font-size:10px;background:rgba(59,130,246,.1);color:var(--acc-soft);border:1px solid rgba(59,130,246,.2);padding:3px 9px;border-radius:4px;font-weight:500">Plugin OFX</span><span style="font-size:10px;background:rgba(59,130,246,.1);color:var(--acc-soft);border:1px solid rgba(59,130,246,.2);padding:3px 9px;border-radius:4px;font-weight:500">DCTL incluido</span></div></div><div class="prod-foot"><div><div class="prod-price">$49<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="https://pay.hotmart.com/A105479773D?checkoutMode=2" class="btn-buy hotmart-fb hotmart__button-checkout" onclick="return false;">Comprar →</a></div></div>
 
-      <!-- Combo -->
-      <div class="prod" data-cat="plugin dctl" style="border-color:rgba(245,166,35,.3)"><div class="prod-thumb"><div class="prod-icon-bg gold"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg gold" viewBox="0 0 64 64" fill="none"><path d="M32 4L8 18v28l24 14 24-14V18L32 4z" stroke="url(#gg1)" stroke-width="1.5" fill="rgba(245,166,35,0.06)"/><path d="M32 4v56M8 18l24 14 24-14M8 46l24-14 24 14" stroke="url(#gg1)" stroke-width="1.5" stroke-linecap="round"/><defs><linearGradient id="gg1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#FFD173"/><stop offset="100%" stop-color="#F5A623"/></linearGradient></defs></svg></div><span class="badge bg">Combo</span></div><div class="prod-body"><div class="prod-cat" style="color:var(--gold)">Plugin OFX + DCTL · DaVinci Resolve</div><div class="prod-name">Combo Profesional</div><div class="prod-desc">El flujo completo de 3 nodos: exposición → OneClick Grade → Film Look Finisher. El resultado cinematográfico definitivo.</div><div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap"><span style="font-size:10px;background:rgba(245,166,35,.1);color:var(--gold);border:1px solid rgba(245,166,35,.2);padding:2px 8px;border-radius:4px">Plugin OFX</span><span style="font-size:10px;background:rgba(245,166,35,.1);color:var(--gold);border:1px solid rgba(245,166,35,.2);padding:2px 8px;border-radius:4px">DCTL incluido</span></div></div><div class="prod-foot"><div><div class="prod-price" style="color:var(--gold)">$49<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Ahorra $10 vs. separados</div></div><a href="https://pay.hotmart.com/A105479773D?checkoutMode=2" class="btn-buy hotmart-fb hotmart__button-checkout" style="background:linear-gradient(135deg,var(--gold),var(--gold2));color:#000;box-shadow:0 2px 12px rgba(245,166,35,.3)" onclick="return false;">Comprar →</a></div></div>
+      <!-- OneClick Grade for Adobe -->
+      <div class="prod" data-cat="plugin"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="adb1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs><rect x="6" y="14" width="24" height="36" rx="3" stroke="url(#adb1)" stroke-width="1.5" fill="rgba(59,130,246,0.06)"/><path d="M14 22 V42 M14 22 H20 C22.5 22, 24 24, 24 27 C24 30, 22.5 32, 20 32 H14" stroke="url(#adb1)" stroke-width="1.5" stroke-linecap="round"/><rect x="34" y="14" width="24" height="36" rx="3" stroke="url(#adb1)" stroke-width="1.5" fill="rgba(59,130,246,0.06)"/><path d="M38 42 L46 22 L54 42 M40.5 36 H51.5" stroke="url(#adb1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span class="badge bn">Adobe</span></div><div class="prod-body"><div class="prod-cat">Plugin · Premiere Pro + After Effects</div><div class="prod-name">OneClick Grade · Adobe</div><div class="prod-desc">Plugin de conversión y look creativo para Adobe Premiere Pro y After Effects. Convierte LOG y aplica los 51 LUTs cinematográficos.</div><div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap"><span style="font-size:10px;background:rgba(59,130,246,.1);color:var(--acc-soft);border:1px solid rgba(59,130,246,.2);padding:3px 9px;border-radius:4px;font-weight:500">Premiere Pro</span><span style="font-size:10px;background:rgba(59,130,246,.1);color:var(--acc-soft);border:1px solid rgba(59,130,246,.2);padding:3px 9px;border-radius:4px;font-weight:500">After Effects</span></div></div><div class="prod-foot"><div><div class="prod-price">$37<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
 
       <!-- Film Look Finisher DCTL solo -->
-      <div class="prod" data-cat="dctl"><div class="prod-thumb"><img src="images/dctl-ui.png" alt="Film Look Finisher"/><span class="badge bn">Solo DCTL</span></div><div class="prod-body"><div class="prod-cat">DCTL · DaVinci Resolve</div><div class="prod-name">Film Look Finisher</div><div class="prod-desc">Densidad de color estilo Hollywood, lavar negros, look mate en altas luces y split toning intuitivo. El tercer nodo del flujo profesional.</div></div><div class="prod-foot"><div><div class="prod-price">$28<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Solo DCTL · instalación manual</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
+      <div class="prod" data-cat="dctl"><div class="prod-thumb"><img src="images/dctl-ui.png" alt="Film Look Finisher"/><span class="badge bn">Solo DCTL</span></div><div class="prod-body"><div class="prod-cat">DCTL · DaVinci Resolve</div><div class="prod-name">Film Look Finisher</div><div class="prod-desc">Densidad de color estilo Hollywood, lavar negros, look mate en altas luces y split toning intuitivo. El acabado profesional para tu flujo de color.</div></div><div class="prod-foot"><div><div class="prod-price">$28<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Solo DCTL</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
 
       <!-- Proxymiti -->
-      <div class="prod" data-cat="script ae"><div class="prod-thumb"><div class="prod-icon-bg purple"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg purple" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="6" fill="url(#pp1)"/><circle cx="32" cy="32" r="14" stroke="url(#pp1)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/><circle cx="32" cy="32" r="22" stroke="url(#pp1)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.4"/><circle cx="32" cy="32" r="30" stroke="url(#pp1)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.2"/><defs><linearGradient id="pp1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#8B7FFF"/><stop offset="100%" stop-color="#5BC8FF"/></linearGradient></defs></svg></div></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">Proxymiti</div><div class="prod-desc">Script para After Effects que interactúa y gestiona automáticamente los elementos que se acercan al encuadre. Control inteligente de proximidad.</div></div><div class="prod-foot"><div><div class="prod-price">$22<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
+      <div class="prod" data-cat="script ae"><div class="prod-thumb"><div class="prod-icon-bg purple"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg purple" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="6" fill="url(#pp1)"/><circle cx="32" cy="32" r="14" stroke="url(#pp1)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.6"/><circle cx="32" cy="32" r="22" stroke="url(#pp1)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.4"/><circle cx="32" cy="32" r="30" stroke="url(#pp1)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.2"/><defs><linearGradient id="pp1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#60A5FA"/><stop offset="100%" stop-color="#3B82F6"/></linearGradient></defs></svg></div></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">Proxymiti</div><div class="prod-desc">Script para After Effects que interactúa y gestiona automáticamente los elementos que se acercan al encuadre. Control inteligente de proximidad.</div></div><div class="prod-foot"><div><div class="prod-price">$22<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
 
       <!-- OC-GLAS -->
-      <div class="prod" data-cat="script ae free"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="og1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#5BC8FF"/><stop offset="100%" stop-color="#8B7FFF"/></linearGradient><radialGradient id="og2"><stop offset="0%" stop-color="rgba(255,255,255,0.4)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><rect x="10" y="14" width="44" height="36" rx="14" stroke="url(#og1)" stroke-width="1.5" fill="rgba(91,200,255,0.08)"/><ellipse cx="22" cy="24" rx="6" ry="3" fill="url(#og2)"/><rect x="14" y="18" width="36" height="28" rx="10" stroke="url(#og1)" stroke-width="1" opacity="0.4" fill="none"/></svg></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">OC - GLAS</div><div class="prod-desc">Script para After Effects que emula el efecto Liquid Glass de Apple. Da a tus composiciones ese acabado translúcido y moderno directamente en AE.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'OC-GLAS');return false;">Descargar →</a></div></div>
+      <div class="prod" data-cat="script ae free"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="og1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient><radialGradient id="og2"><stop offset="0%" stop-color="rgba(255,255,255,0.4)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><rect x="10" y="14" width="44" height="36" rx="14" stroke="url(#og1)" stroke-width="1.5" fill="rgba(59,130,246,0.08)"/><ellipse cx="22" cy="24" rx="6" ry="3" fill="url(#og2)"/><rect x="14" y="18" width="36" height="28" rx="10" stroke="url(#og1)" stroke-width="1" opacity="0.4" fill="none"/></svg></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">OC - GLAS</div><div class="prod-desc">Script para After Effects que emula el efecto Liquid Glass de Apple. Da a tus composiciones ese acabado translúcido y moderno directamente en AE.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'OC-GLAS');return false;">Descargar →</a></div></div>
 
       <!-- Carrusels -->
-      <div class="prod" data-cat="script ae"><div class="prod-thumb"><div class="prod-icon-bg pink"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg pink" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="cr1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#FF5096"/><stop offset="100%" stop-color="#8B7FFF"/></linearGradient></defs><ellipse cx="32" cy="32" rx="26" ry="10" stroke="url(#cr1)" stroke-width="1.5" fill="none" opacity="0.4"/><rect x="20" y="22" width="10" height="14" rx="2" stroke="url(#cr1)" stroke-width="1.5" fill="rgba(255,80,150,0.1)"/><rect x="34" y="22" width="10" height="14" rx="2" stroke="url(#cr1)" stroke-width="1.5" fill="rgba(255,80,150,0.15)"/><rect x="48" y="26" width="6" height="10" rx="1" stroke="url(#cr1)" stroke-width="1" fill="none" opacity="0.5"/><rect x="10" y="26" width="6" height="10" rx="1" stroke="url(#cr1)" stroke-width="1" fill="none" opacity="0.5"/></svg></div></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">Carrusels</div><div class="prod-desc">Genera carruseles 3D de manera automática en After Effects. Elige tus imágenes, ajusta parámetros y el script construye el carrusel por ti.</div></div><div class="prod-foot"><div><div class="prod-price">$17<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
+      <div class="prod" data-cat="script ae"><div class="prod-thumb"><div class="prod-icon-bg pink"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg pink" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="cr1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#FF5096"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs><ellipse cx="32" cy="32" rx="26" ry="10" stroke="url(#cr1)" stroke-width="1.5" fill="none" opacity="0.4"/><rect x="20" y="22" width="10" height="14" rx="2" stroke="url(#cr1)" stroke-width="1.5" fill="rgba(255,80,150,0.1)"/><rect x="34" y="22" width="10" height="14" rx="2" stroke="url(#cr1)" stroke-width="1.5" fill="rgba(255,80,150,0.15)"/><rect x="48" y="26" width="6" height="10" rx="1" stroke="url(#cr1)" stroke-width="1" fill="none" opacity="0.5"/><rect x="10" y="26" width="6" height="10" rx="1" stroke="url(#cr1)" stroke-width="1" fill="none" opacity="0.5"/></svg></div></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">Carrusels</div><div class="prod-desc">Genera carruseles 3D de manera automática en After Effects. Elige tus imágenes, ajusta parámetros y el script construye el carrusel por ti.</div></div><div class="prod-foot"><div><div class="prod-price">$17<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
 
       <!-- OC-Smooth -->
-      <div class="prod" data-cat="script ae free"><div class="prod-thumb"><div class="prod-icon-bg green"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg green" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="sm1" x1="0" y1="0" x2="64" y2="0"><stop offset="0%" stop-color="#30d158"/><stop offset="100%" stop-color="#5BC8FF"/></linearGradient></defs><path d="M6 44 Q 18 12, 32 32 T 58 20" stroke="url(#sm1)" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="6" cy="44" r="3" fill="#30d158"/><circle cx="32" cy="32" r="3" fill="#30d158" opacity="0.7"/><circle cx="58" cy="20" r="3" fill="#5BC8FF"/><path d="M6 50 L58 50" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="2 4"/></svg></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">OC - Smooth</div><div class="prod-desc">Controla la suavidad de las curvas de animación en After Effects de forma visual e intuitiva. Animaciones más fluidas en segundos.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'OC-Smooth');return false;">Descargar →</a></div></div>
+      <div class="prod" data-cat="script ae free"><div class="prod-thumb"><div class="prod-icon-bg green"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg green" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="sm1" x1="0" y1="0" x2="64" y2="0"><stop offset="0%" stop-color="#30d158"/><stop offset="100%" stop-color="#3B82F6"/></linearGradient></defs><path d="M6 44 Q 18 12, 32 32 T 58 20" stroke="url(#sm1)" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="6" cy="44" r="3" fill="#30d158"/><circle cx="32" cy="32" r="3" fill="#30d158" opacity="0.7"/><circle cx="58" cy="20" r="3" fill="#3B82F6"/><path d="M6 50 L58 50" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="2 4"/></svg></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">Script · After Effects</div><div class="prod-name">OC - Smooth</div><div class="prod-desc">Controla la suavidad de las curvas de animación en After Effects de forma visual e intuitiva. Animaciones más fluidas en segundos.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'OC-Smooth');return false;">Descargar →</a></div></div>
 
       <!-- Control de Finanzas -->
-      <div class="prod" data-cat="herramienta"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="cf1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#5BC8FF"/><stop offset="100%" stop-color="#8B7FFF"/></linearGradient></defs><rect x="8" y="44" width="8" height="14" rx="2" fill="url(#cf1)" opacity="0.4"/><rect x="20" y="32" width="8" height="26" rx="2" fill="url(#cf1)" opacity="0.6"/><rect x="32" y="38" width="8" height="20" rx="2" fill="url(#cf1)" opacity="0.5"/><rect x="44" y="20" width="8" height="38" rx="2" fill="url(#cf1)"/><path d="M10 38 L24 30 L36 34 L48 14" stroke="url(#cf1)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="14" r="3" fill="#5BC8FF"/></svg></div></div><div class="prod-body"><div class="prod-cat">Herramienta · Freelancer</div><div class="prod-name">Control de Finanzas</div><div class="prod-desc">Sistema de control financiero diseñado para freelancers creativos. Gestiona ingresos, gastos, clientes y proyectos en un solo lugar.</div></div><div class="prod-foot"><div><div class="prod-price">$27<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
+      <div class="prod" data-cat="herramienta"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="cf1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient></defs><rect x="8" y="44" width="8" height="14" rx="2" fill="url(#cf1)" opacity="0.4"/><rect x="20" y="32" width="8" height="26" rx="2" fill="url(#cf1)" opacity="0.6"/><rect x="32" y="38" width="8" height="20" rx="2" fill="url(#cf1)" opacity="0.5"/><rect x="44" y="20" width="8" height="38" rx="2" fill="url(#cf1)"/><path d="M10 38 L24 30 L36 34 L48 14" stroke="url(#cf1)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="48" cy="14" r="3" fill="#3B82F6"/></svg></div></div><div class="prod-body"><div class="prod-cat">Herramienta · Freelancer</div><div class="prod-name">Control de Finanzas</div><div class="prod-desc">Sistema de control financiero diseñado para freelancers creativos. Gestiona ingresos, gastos, clientes y proyectos en un solo lugar.</div></div><div class="prod-foot"><div><div class="prod-price">$27<small>USD</small></div><div style="font-size:10px;color:var(--g3)">Pago único</div></div><a href="#" class="btn-buy">Comprar →</a></div></div>
 
       <!-- Liquid Glass DCTL -->
-      <div class="prod" data-cat="dctl free"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="lg1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#5BC8FF"/><stop offset="100%" stop-color="#8B7FFF"/></linearGradient><radialGradient id="lg2"><stop offset="0%" stop-color="rgba(255,255,255,0.5)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><path d="M32 6 C32 6, 14 28, 14 42 C14 52, 22 58, 32 58 C42 58, 50 52, 50 42 C50 28, 32 6, 32 6Z" stroke="url(#lg1)" stroke-width="1.5" fill="rgba(91,200,255,0.1)"/><ellipse cx="26" cy="32" rx="5" ry="8" fill="url(#lg2)"/><path d="M32 6 C32 6, 18 24, 18 38" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none"/></svg></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">DCTL · DaVinci Resolve</div><div class="prod-name">Liquid Glass</div><div class="prod-desc">DCTL para DaVinci Resolve que reproduce el efecto Liquid Glass en tu footage. El look translúcido más moderno del momento, listo en un nodo.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'Liquid-Glass-DCTL');return false;">Descargar →</a></div></div>
+      <div class="prod" data-cat="dctl free"><div class="prod-thumb"><div class="prod-icon-bg"><div class="prod-grid-pattern"></div><svg class="prod-icon-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="lg1" x1="0" y1="0" x2="64" y2="64"><stop offset="0%" stop-color="#3B82F6"/><stop offset="100%" stop-color="#60A5FA"/></linearGradient><radialGradient id="lg2"><stop offset="0%" stop-color="rgba(255,255,255,0.5)"/><stop offset="100%" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><path d="M32 6 C32 6, 14 28, 14 42 C14 52, 22 58, 32 58 C42 58, 50 52, 50 42 C50 28, 32 6, 32 6Z" stroke="url(#lg1)" stroke-width="1.5" fill="rgba(59,130,246,0.1)"/><ellipse cx="26" cy="32" rx="5" ry="8" fill="url(#lg2)"/><path d="M32 6 C32 6, 18 24, 18 38" stroke="rgba(255,255,255,0.3)" stroke-width="1" fill="none"/></svg></div><span class="badge bf">Gratis</span></div><div class="prod-body"><div class="prod-cat">DCTL · DaVinci Resolve</div><div class="prod-name">Liquid Glass</div><div class="prod-desc">DCTL para DaVinci Resolve que reproduce el efecto Liquid Glass en tu footage. El look translúcido más moderno del momento, listo en un nodo.</div></div><div class="prod-foot"><div><div class="prod-price free">Gratis</div></div><a href="#" class="btn-buy btn-free" onclick="downloadFree(this,'Liquid-Glass-DCTL');return false;">Descargar →</a></div></div>
 
     </div>
 
@@ -775,11 +772,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
     <div id="dl-modal" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);align-items:center;justify-content:center">
       <div style="background:var(--bg3);border:1px solid rgba(245,166,35,.3);border-radius:16px;padding:44px;max-width:440px;width:90%;position:relative;text-align:center">
         <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--acc) 50%,transparent);border-radius:16px 16px 0 0"></div>
-        <div style="margin-bottom:16px;display:flex;justify-content:center" id="dl-icon"><div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(91,200,255,0.15),rgba(139,127,255,0.1));border:1px solid rgba(91,200,255,0.25);display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="13" rx="2" stroke="var(--acc)" stroke-width="1.6" fill="rgba(91,200,255,0.05)"/><path d="M3 12 H21" stroke="var(--acc)" stroke-width="1.6"/><path d="M12 8 V21" stroke="var(--acc)" stroke-width="1.6"/><path d="M12 8 C10 8, 7 5, 7 4 C7 3, 8 2.5, 9 3 C10 3.5, 12 6, 12 8 Z" stroke="var(--acc)" stroke-width="1.6" fill="rgba(91,200,255,0.1)"/><path d="M12 8 C14 8, 17 5, 17 4 C17 3, 16 2.5, 15 3 C14 3.5, 12 6, 12 8 Z" stroke="var(--acc)" stroke-width="1.6" fill="rgba(91,200,255,0.1)"/></svg></div></div>
+        <div style="margin-bottom:16px;display:flex;justify-content:center" id="dl-icon"><div style="width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(96,165,250,0.1));border:1px solid rgba(59,130,246,0.25);display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="8" width="18" height="13" rx="2" stroke="var(--acc)" stroke-width="1.6" fill="rgba(59,130,246,0.05)"/><path d="M3 12 H21" stroke="var(--acc)" stroke-width="1.6"/><path d="M12 8 V21" stroke="var(--acc)" stroke-width="1.6"/><path d="M12 8 C10 8, 7 5, 7 4 C7 3, 8 2.5, 9 3 C10 3.5, 12 6, 12 8 Z" stroke="var(--acc)" stroke-width="1.6" fill="rgba(59,130,246,0.1)"/><path d="M12 8 C14 8, 17 5, 17 4 C17 3, 16 2.5, 15 3 C14 3.5, 12 6, 12 8 Z" stroke="var(--acc)" stroke-width="1.6" fill="rgba(59,130,246,0.1)"/></svg></div></div>
         <h3 style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em;margin-bottom:8px" id="dl-title">Descargar gratis</h3>
         <p style="font-size:14px;color:var(--g2);line-height:1.65;margin-bottom:24px">Déjanos tu email y te enviamos el link de descarga inmediatamente.</p>
         <input id="dl-email" type="email" placeholder="tu@email.com" style="width:100%;background:var(--bg);border:1px solid var(--border2);border-radius:8px;padding:13px 16px;font-size:14px;color:#fff;font-family:var(--font);outline:none;margin-bottom:12px"/>
-        <button onclick="submitFree()" style="width:100%;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:14px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:var(--font);transition:all .2s;box-shadow:0 4px 16px rgba(91,200,255,.25)">Enviarme el link →</button>
+        <button onclick="submitFree()" style="width:100%;background:linear-gradient(135deg,var(--acc),var(--acc2));color:#fff;font-size:14px;font-weight:700;padding:14px;border-radius:8px;border:none;cursor:pointer;font-family:var(--font);transition:all .2s;box-shadow:0 4px 16px rgba(59,130,246,.25)">Enviarme el link →</button>
         <div id="dl-success" style="display:none;margin-top:16px;padding:12px;background:rgba(48,209,88,.1);border:1px solid rgba(48,209,88,.25);border-radius:8px;font-size:13px;color:#30d158">✓ ¡Listo! Revisa tu email en los próximos minutos.</div>
         <button onclick="closeDL()" style="position:absolute;top:14px;right:16px;background:none;border:none;color:var(--g3);cursor:pointer;font-size:20px;line-height:1">×</button>
       </div>
@@ -825,7 +822,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
     <div class="faq-item reveal d2"><button class="faq-q" onclick="faq(this)">¿Con qué software es compatible?<div class="faq-ico"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="faq-a">OneClick Grade es compatible con DaVinci Resolve, Adobe Premiere Pro y Adobe After Effects. Funciona como plugin OFX nativo, lo que garantiza máxima estabilidad y rendimiento profesional en tu flujo de trabajo.</div></div>
     <div class="faq-item reveal d1"><button class="faq-q" onclick="faq(this)">¿Puedo usarlo en proyectos comerciales?<div class="faq-ico"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="faq-a">Sí. La licencia incluye uso comercial sin restricciones: marcas, publicidad, YouTube, bodas, documentales. Sin royalties.</div></div>
     <div class="faq-item reveal d2"><button class="faq-q" onclick="faq(this)">¿Cómo recibo el plugin al comprar?<div class="faq-ico"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="faq-a">Recibes el link de descarga por email de forma inmediata y automática al completar el pago en Hotmart.</div></div>
-    <div class="faq-item reveal d1"><button class="faq-q" onclick="faq(this)">¿Hay garantía de devolución?<div class="faq-ico"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="faq-a">7 días de garantía completa. Si no mejora tu flujo de trabajo, te devolvemos el dinero sin preguntas.</div></div>
+    <div class="faq-item reveal d1"><button class="faq-q" onclick="faq(this)">¿Hay garantía de devolución?<div class="faq-ico"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M5 1v8M1 5h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></button><div class="faq-a">7 días de garantía completa. Si no mejora tu flujo de trabajo, te devolvemos el dinero sin preguntas. Para soporte o devoluciones escríbenos a <a href="mailto:Oneclickgrade@gmail.com" style="color:var(--acc-soft)">Oneclickgrade@gmail.com</a> y te respondemos en menos de 24 horas.</div></div>
   </div>
 </section>
 
@@ -847,8 +844,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
 <footer>
   <div class="foot-in">
     <div class="foot-logo"><span class="w">OneClick</span><span class="y">Tools</span></div>
-    <div class="foot-links"><a href="#plugin">Plugin</a><a href="#tienda">Tienda</a><a href="#faq">FAQ</a><a href="#">Soporte</a><a href="#">Devoluciones</a></div>
-    <div class="foot-copy">© 2025 OCG Tools · Hecho para creadores</div>
+    <div class="foot-links"><a href="#plugin">Plugin</a><a href="#tienda">Tienda</a><a href="#faq">FAQ</a><a href="mailto:Oneclickgrade@gmail.com">Soporte</a><a href="mailto:Oneclickgrade@gmail.com">Contacto</a></div>
+    <div class="foot-copy">© 2026 OCG Tools · Hecho para creadores · <a href="mailto:Oneclickgrade@gmail.com" style="color:var(--acc-soft);text-decoration:none">Oneclickgrade@gmail.com</a></div>
   </div>
 </footer>
 
@@ -883,13 +880,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
     <div class="mnav-title">Tienda · Categorías</div>
     <div class="mnav-cats">
       <a href="#tienda" class="mnav-cat" onclick="toggleMNav();filterStoreFromNav('all')">
-        <div class="mnav-cat-ico" style="background:linear-gradient(135deg,rgba(91,200,255,.18),rgba(139,127,255,.1))">
+        <div class="mnav-cat-ico" style="background:linear-gradient(135deg,rgba(59,130,246,.18),rgba(96,165,250,.1))">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
         </div>
         <div><div class="mnav-cat-t">Todos los productos</div><div class="mnav-cat-d">Ver el catálogo completo</div></div>
       </a>
       <a href="#tienda" class="mnav-cat" onclick="toggleMNav();filterStoreFromNav('plugin')">
-        <div class="mnav-cat-ico" style="background:linear-gradient(135deg,rgba(91,200,255,.2),rgba(91,200,255,.05))">
+        <div class="mnav-cat-ico" style="background:linear-gradient(135deg,rgba(59,130,246,.2),rgba(59,130,246,.05))">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 10 H21" stroke="currentColor" stroke-width="1.6"/></svg>
         </div>
         <div><div class="mnav-cat-t">Plugins OFX</div><div class="mnav-cat-d">Para DaVinci, Premiere y AE</div></div>
@@ -901,13 +898,13 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:48px 40px
         <div><div class="mnav-cat-t">DCTLs</div><div class="mnav-cat-d">Looks y efectos para DaVinci</div></div>
       </a>
       <a href="#tienda" class="mnav-cat" onclick="toggleMNav();filterStoreFromNav('script')">
-        <div class="mnav-cat-ico" style="background:linear-gradient(135deg,rgba(139,127,255,.2),rgba(139,127,255,.05))">
+        <div class="mnav-cat-ico" style="background:linear-gradient(135deg,rgba(96,165,250,.2),rgba(96,165,250,.05))">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M8 6 L4 12 L8 18 M16 6 L20 12 L16 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
         <div><div class="mnav-cat-t">Scripts AE</div><div class="mnav-cat-d">Automatiza After Effects</div></div>
       </a>
       <a href="#tienda" class="mnav-cat" onclick="toggleMNav();filterStoreFromNav('herramienta')">
-        <div class="mnav-cat-ico" style="background:linear-gradient(135deg,rgba(91,200,255,.18),rgba(48,209,88,.05))">
+        <div class="mnav-cat-ico" style="background:linear-gradient(135deg,rgba(59,130,246,.18),rgba(48,209,88,.05))">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M14 6 L18 10 L8 20 H4 V16 L14 6 Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M12 8 L16 12" stroke="currentColor" stroke-width="1.6"/></svg>
         </div>
         <div><div class="mnav-cat-t">Herramientas</div><div class="mnav-cat-d">Para freelancers creativos</div></div>
